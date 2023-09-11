@@ -7,13 +7,7 @@ public class ProjectileController : MonoBehaviour
     //Stage stage                  // Stage 클래스 추가시 주석 해제
 
     // 소환 갯수
-    private int _GenCoeff
-    {
-        get { return _GenCoeff; }
-        set { GenCoeff = value; }
-    }
     public int GenCoeff;
-
     public int GenCount;
 
     // 스피드
@@ -51,12 +45,8 @@ public class ProjectileController : MonoBehaviour
     {
         float x = Random.Range(-2.7f, 2.7f);
         float y = 6f;
-        gameObject.transform.position = new Vector3(x, y, 0);
-    }
+        StartPosition = new Vector3(x, y, 0);
+        gameObject.transform.position = StartPosition;
 
-    public void SetRotation()
-    {
-        
     }
-
 }
