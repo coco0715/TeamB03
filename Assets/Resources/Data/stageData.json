@@ -1,0 +1,34 @@
+{
+	"StageInfoList": [
+		{
+			"MaxScore": 1500,
+			"IsLocked": true,
+			"EnemyGenCountCoeff": 5,
+			"CoinGenCoeff": 3,
+			"EnemySpeedCoeff": 1,
+			"CoinSpeedCoeff": 1,
+			"EnemyScaleCoeff": 0.7,
+			"CoinScaleCoeff": 1
+		},
+		{
+			"MaxScore": 2000,
+			"IsLocked": false,
+			"EnemyGenCountCoeff": 10,
+			"CoinGenCoeff": 3,
+			"EnemySpeedCoeff": 1,
+			"CoinSpeedCoeff": 1.5,
+			"EnemyScaleCoeff": 0.7,
+			"CoinScaleCoeff": 1
+		},
+		{
+			"MaxScore": 2500,
+			"IsLocked": false,
+			"EnemyGenCountCoeff": 10,
+			"CoinGenCoeff": 5,
+			"EnemySpeedCoeff": 1.1,
+			"CoinSpeedCoeff": 1.5,
+			"EnemyScaleCoeff": 1,
+			"CoinScaleCoeff": 1
+		}
+	]
+}
