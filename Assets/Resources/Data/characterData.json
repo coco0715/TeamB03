@@ -1,0 +1,88 @@
+{
+	"CharacterInfoList": [
+		{
+			"Hp": 3,
+			"Img":"Jelly0",
+			"AttackSpeed": 1,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 3,
+			"Img":"Jelly1",
+			"AttackSpeed": 2,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 3,
+			"Img":"Jelly2",
+			"AttackSpeed": 1,
+			"ProjectileSize": 0.8,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 3,
+			"Img":"Jelly3",
+			"AttackSpeed": 1,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1.3
+		},
+		{
+			"Hp": 4,
+			"Img":"Jelly4",
+			"AttackSpeed": 1,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 4,
+			"Img":"Jelly5",
+			"AttackSpeed": 2,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 4,
+			"Img":"Jelly6",
+			"AttackSpeed": 1,
+			"ProjectileSize": 0.8,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 4,
+			"Img":"Jelly7",
+			"AttackSpeed": 1,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1.3
+		},
+		{
+			"Hp": 5,
+			"Img":"Jelly8",
+			"AttackSpeed": 1,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 5,
+			"Img":"Jelly9",
+			"AttackSpeed": 2,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 5,
+			"Img":"Jelly10",
+			"AttackSpeed": 1,
+			"ProjectileSize": 0.8,
+			"MoveSpeed": 1
+		},
+		{
+			"Hp": 5,
+			"Img":"Jelly11",
+			"AttackSpeed": 1,
+			"ProjectileSize": 1,
+			"MoveSpeed": 1.3
+		}
+	]
+}
