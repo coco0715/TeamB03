@@ -17,6 +17,7 @@ public class Define
         Unknown,
         MainScene,
         GameScene,
+        JiyeonScene,
     }
 
     public enum Sound
