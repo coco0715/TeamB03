@@ -7,6 +7,7 @@ namespace StageInformation
     [System.Serializable]
     public class Stage
     {
+        int ClearScore; 
         int MaxScore;
         public bool IsLocked;
         public float EnemyGenCountCoeff;

@@ -1,7 +1,8 @@
 {
 	"StageInfoList": [
 		{
-			"MaxScore": 1500,
+			"ClearScore": 1500,
+			"MaxScore": 0,
 			"IsLocked": true,
 			"EnemyGenCountCoeff": 5,
 			"CoinGenCoeff": 3,
@@ -11,7 +12,8 @@
 			"CoinScaleCoeff": 1
 		},
 		{
-			"MaxScore": 2000,
+			"ClearScore": 2000,
+			"MaxScore": 0,
 			"IsLocked": false,
 			"EnemyGenCountCoeff": 10,
 			"CoinGenCoeff": 3,
@@ -21,7 +23,8 @@
 			"CoinScaleCoeff": 1
 		},
 		{
-			"MaxScore": 2500,
+			"ClearScore": 2500,
+			"MaxScore": 0,
 			"IsLocked": false,
 			"EnemyGenCountCoeff": 10,
 			"CoinGenCoeff": 5,
