@@ -47,9 +47,11 @@ public class ProjectileController : MonoBehaviour
         GenCount = GenCoeff;
     }
 
-    public void SetStartPosition()
+    public void SetStartPosition(GameObject gameObject)
     {
-
+        float x = Random.Range(-2.7f, 2.7f);
+        float y = 6f;
+        gameObject.transform.position = new Vector3(x, y, 0);
     }
 
     public void SetRotation()
