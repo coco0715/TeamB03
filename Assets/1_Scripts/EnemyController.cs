@@ -31,6 +31,6 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SummonEnemy", 1f, 1f);
+        InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.Speed);
     }
 }

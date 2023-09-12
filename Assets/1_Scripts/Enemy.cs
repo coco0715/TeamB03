@@ -45,6 +45,9 @@ public class Enemy : Projectile
 
     private void Update()
     {
+        if (Pool == null)
+            return;
+
         transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
         if (this != null && this.transform.position.y < -6f)
         {
