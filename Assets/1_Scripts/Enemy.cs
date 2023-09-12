@@ -61,6 +61,7 @@ public class Enemy : Projectile
         if (coll.gameObject.tag == "Player")
         {
             Debug.Log("충돌");
+            Debug.Log($"데미지 : {Damage}");
             // player.HP -= Damage;
             Pool.Release(this.gameObject);
         }
