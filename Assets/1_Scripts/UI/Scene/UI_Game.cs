@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.U2D;
-using NPCDatas;
 
 public class UI_Game : UI_Scene
 {

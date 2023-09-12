@@ -18,6 +18,7 @@ public class Define
         MainScene,
         GameScene,
         JiyeonScene,
+        YoungHyunScene
     }
 
     public enum Sound
