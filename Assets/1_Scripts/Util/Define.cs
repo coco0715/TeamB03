@@ -18,7 +18,7 @@ public class Define
         MainScene,
         GameScene,
         JiyeonScene,
-        YoungHyunScene
+        YoungHyunScene,
         HalimScene
     }
 
