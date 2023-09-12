@@ -56,14 +56,14 @@ public class EnemyController : MonoBehaviour
                 Array.Resize(ref randEnemyArray, randEnemyArray.Length + 1);
                 randEnemyArray[randEnemyArray.Length - 1] = stage2SpriteInfos[i].enemyPrefab;
                 Array.Resize(ref damageArray, damageArray.Length + 1);
-                damageArray[damageArray.Length - 1] = 1;       // stage별 데이지 변화 필요시 변경
+                damageArray[damageArray.Length - 1] = 2;       // stage별 데이지 변화 필요시 변경
             }
             for (int i = 0; i < Stage3SpriteInfos.Length; i++) // stage 숫자가 3보다 작거나 같다면의 조건 추가
             {
                 Array.Resize(ref randEnemyArray, randEnemyArray.Length + 1);
                 randEnemyArray[randEnemyArray.Length - 1] = Stage3SpriteInfos[i].enemyPrefab;
                 Array.Resize(ref damageArray, damageArray.Length + 1);
-                damageArray[damageArray.Length - 1] = 1;       // stage별 데이지 변화 필요시 변경
+                damageArray[damageArray.Length - 1] = 3;       // stage별 데이지 변화 필요시 변경
             }
         }
     }
@@ -90,6 +90,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         SetDict();
-        InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.Speed);
+        InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.GenCount);
     }
 }

@@ -74,5 +74,9 @@ MonoBehaviour:
     enemyPrefab: {fileID: 4276338732681686867, guid: f16f6a210440df44e87687a72d5825c9, type: 3}
   - animatorName: blue3
     enemyPrefab: {fileID: 1201408413711666781, guid: b10e2fec0878b9d478768d2325764f00, type: 3}
+  - animatorName: penguinAttack3
+    enemyPrefab: {fileID: 5001705970066616246, guid: e148fb381da7d1643b8c653273334af5, type: 3}
+  - animatorName: penguinSlide3
+    enemyPrefab: {fileID: 5001705970066616246, guid: f75879530a1123741ba314505d5e3f80, type: 3}
   randEnemyArray: []
   damageArray: 
