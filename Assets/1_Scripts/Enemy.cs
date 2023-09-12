@@ -59,7 +59,7 @@ public class Enemy : Projectile
         {
             Debug.Log("충돌");
             // player.HP -= Damage;
-            Destroy(this.gameObject);
+            Pool.Release(this.gameObject);
         }
         // 이후, 플레이어 투사체 태그에 닿으면 사라지는 기능 구현
         // else if (coll.gameObject.tag == "bullet")

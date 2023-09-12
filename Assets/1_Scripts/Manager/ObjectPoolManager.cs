@@ -22,10 +22,8 @@ public class ObjectPoolManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
-
-
-            Init();
         }
+        Init();
     }
 
     private void Init()
