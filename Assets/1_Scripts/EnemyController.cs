@@ -21,14 +21,16 @@ public class EnemyController : MonoBehaviour
         EnemySet.SetEnemy();
         if (EnemySet != null)
         {
+            var enemyGo = ObjectPoolManager.instance.Pool.Get();
             Debug.Log($"Start Position : {EnemySet.StartPosition}");
             Debug.Log($"Speed : {EnemySet.Speed}");
-            Instantiate(EnemySet);
+            enemyGo.SetActive(true);
+            enemyGo.transform.position = EnemySet.StartPosition;
         }
     }
 
     private void Start()
     {
-        InvokeRepeating("SummonEnemy", 1f, 1f);
+        InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.Speed);
     }
 }

@@ -10,7 +10,7 @@ public class JiyeonScene : BaseScene
             return false;
 
         SceneType = Define.Scene.JiyeonScene;
-        Managers.UI.ShowSceneUI<UI_Main>();
+        Managers.UI.ShowSceneUI<UI_Jiyeon>();
         Debug.Log("Enter Main");
         return true;
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Enemy : Projectile
 { 
@@ -9,10 +10,11 @@ public class Enemy : Projectile
     //Player player
     public float EnemySpeed;
     public int Damage;
+    public IObjectPool<GameObject> Pool { get; set; }
 
     public void SetEnemy()
     {
-        // GenCoeff = Stage.GenCountCoeff;
+        // GenCoeff = Managers.GameManagers.stages[Managers.GameManager.stageNum].GenCountCoeff;
         // SetCount();
         GenCount = 3;
 
@@ -43,10 +45,14 @@ public class Enemy : Projectile
 
     private void Update()
     {
+        if (Pool == null)
+            return;
+
         transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
         if (this != null && this.transform.position.y < -6f)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            Pool.Release(this.gameObject);
         }
     }
 
@@ -56,7 +62,7 @@ public class Enemy : Projectile
         {
             Debug.Log("충돌");
             // player.HP -= Damage;
-            Destroy(this.gameObject);
+            Pool.Release(this.gameObject);
         }
         // 이후, 플레이어 투사체 태그에 닿으면 사라지는 기능 구현
         // else if (coll.gameObject.tag == "bullet")
