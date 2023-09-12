@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -10,6 +11,8 @@ public class Enemy : Projectile
     //Player player
     public float EnemySpeed;
     public int Damage;
+    public float timeAccumulate;
+
     public IObjectPool<GameObject> Pool { get; set; }
 
     public void SetEnemy()
@@ -37,18 +40,19 @@ public class Enemy : Projectile
     {
         SetEnemy();
         transform.position = StartPosition;
-    }
-    public void SetEnemySprite()
-    {
 
+        timeAccumulate = 0f;
     }
 
     private void Update()
     {
         if (Pool == null)
             return;
+        timeAccumulate += Time.deltaTime;
+        linearPos(Speed, timeAccumulate);
+        //BezierPos(Speed, timeAccumulate);
+        //transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
 
-        transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
         if (this != null && this.transform.position.y < -6f)
         {
             //Destroy(this.gameObject);
@@ -56,6 +60,29 @@ public class Enemy : Projectile
         }
     }
 
+    private void linearPos(float speed, float time)
+    {
+        transform.position = Vector3.down * speed * time + StartPosition;
+    }
+
+    private void BezierPos(float speed, float time)
+    {
+        Vector3[] points = new Vector3[4];
+        points[0] = StartPosition;
+        points[1] = new Vector3(Random.Range(-2.7f, 2.7f), StartPosition.y, 0);
+        points[2] = new Vector3(Random.Range(-2.7f, 0f), StartPosition.y - 12, 0);
+        points[3] = new Vector3(Random.Range(0f, 2.7f), StartPosition.y - 12, 0);
+        Vector3 bezierPosition;
+        for (float t = 0; t < 1; t = (time * speed) / 10)
+        {
+            bezierPosition = Mathf.Pow(1 - t, 3) * points[0]
+                + Mathf.Pow(1 - t, 2) * 3 * points[1]
+                + Mathf.Pow(t, 2) * 3 * points[2]
+                + Mathf.Pow(t, 3) * points[3];
+
+            transform.position = bezierPosition;
+        }
+    }
     public void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player")
