@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public List<Stage> Stages = new List<Stage>();
     public List<CharacterInformation.CharacterInfo> Characters = new List<CharacterInformation.CharacterInfo>();
 
-    float Timer;
-    int StageNum;
+    public float Timer;
+    public int StageNum;
 
     public void Init()
     {
