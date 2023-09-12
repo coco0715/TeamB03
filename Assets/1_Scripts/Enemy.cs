@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Enemy : Projectile
 { 
@@ -9,6 +10,7 @@ public class Enemy : Projectile
     //Player player
     public float EnemySpeed;
     public int Damage;
+    public IObjectPool<GameObject> Pool { get; set; }
 
     public void SetEnemy()
     {
@@ -46,7 +48,8 @@ public class Enemy : Projectile
         transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
         if (this != null && this.transform.position.y < -6f)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            Pool.Release(this.gameObject);
         }
     }
 
