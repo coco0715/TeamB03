@@ -1,20 +1,18 @@
+using ImageDatas;
+using StageInformation;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_Jiyeon : UI_Scene
 {
-    enum Images
+    enum GameObjects
     {
-        PlayerImage,
-    }
-    enum Texts
-    {
-        NameText,
+        Content,
     }
     enum Buttons
     {
-        EnterButton,
+        BackButton,
     }
 
     void Start()
@@ -27,26 +25,18 @@ public class UI_Jiyeon : UI_Scene
         if (base.Init() == false)
             return false;
 
-        BindImage(typeof(Images));
-        BindText(typeof(Texts));
+        BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
 
-        RefreshUI();
-        GetButton((int)Buttons.EnterButton).gameObject.BindEvent(OnClickedEnterButton);
-
-        Managers.UI.ShowPopupUI<UI_SettingCharacter>();
-
+        GetButton((int)Buttons.BackButton).gameObject.BindEvent(() => { Managers.Scene.ChangeScene(Define.Scene.MainScene); });
+        for (int i = 0; i < Managers.GameManager.Stages.Count; i++)
+        {
+            Stage stage = Managers.GameManager.Stages[i];
+            GameObject item = Managers.UI.MakeSubItem<UI_StageItem>(GetObject((int)GameObjects.Content).transform, "StageItem").gameObject;
+            UI_StageItem stageItem = item.GetOrAddComponent<UI_StageItem>();
+            if (stageItem.Init())
+                stageItem.SetInfo(stage, i+1);
+        }
         return true;
-    }
-
-    public void RefreshUI()
-    {
-        GetText((int)Texts.NameText).text = Managers.User.name;
-        GetImage((int)Images.PlayerImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.img);
-    }
-
-    void OnClickedEnterButton()
-    {
-        Managers.Scene.ChangeScene(Define.Scene.GameScene);
     }
 }
