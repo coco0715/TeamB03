@@ -14,7 +14,7 @@ public class Enemy : Projectile
 
     public void SetEnemy()
     {
-        // GenCoeff = Stage.GenCountCoeff;
+        // GenCoeff = Managers.GameManagers.stages[Managers.GameManager.stageNum].GenCountCoeff;
         // SetCount();
         GenCount = 3;
 
