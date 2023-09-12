@@ -32,8 +32,6 @@ public class Enemy : Projectile
         SetScale();
 
         StartPosition = SetStartPosition();
-        
-        //Debug.Log($"Start Position : {StartPosition}");
     }
 
     private void Start()
@@ -41,17 +39,17 @@ public class Enemy : Projectile
         SetEnemy();
         transform.position = StartPosition;
 
-        timeAccumulate = 0f;
+        //timeAccumulate = 0f;
     }
 
     private void Update()
     {
         if (Pool == null)
             return;
-        timeAccumulate += Time.deltaTime;
-        linearPos(Speed, timeAccumulate);
+        //timeAccumulate += Time.deltaTime;
+        //linearPos(Speed, timeAccumulate);
         //BezierPos(Speed, timeAccumulate);
-        //transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
+        transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
 
         if (this != null && this.transform.position.y < -6f)
         {
