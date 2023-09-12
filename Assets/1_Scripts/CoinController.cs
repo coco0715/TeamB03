@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinController : ProjectileController
+public class CoinController : Projectile
 {
     public float CoinSpeed;
     public GameObject Coin;
@@ -24,7 +24,7 @@ public class CoinController : ProjectileController
         ScaleCoeff = 1.0f;
         SetScale();
 
-        SetStartPosition(Coin);
+        StartPosition = SetStartPosition();
     }
 
     private void Update()
@@ -43,10 +43,5 @@ public class CoinController : ProjectileController
             Debug.Log("10점 추가");
             Destroy(Coin);
         }
-        // 이후, 플레이어 투사체 태그에 닿으면 사라지는 기능 구현
-        // else if (coll.gameObject.tag == "bullet")
-        //{
-        //    Destroy(coll.gameObject);
-        //}
     }
 }
