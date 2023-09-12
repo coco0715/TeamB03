@@ -17,7 +17,7 @@ public class Define
         Unknown,
         MainScene,
         GameScene,
-        YoungHyunScene
+        JiyeonScene,
     }
 
     public enum Sound
