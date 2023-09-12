@@ -45,6 +45,7 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
 
+            s_gameManager.Init();
             s_resourceManager.Init();
             s_soundManager.Init();
 
