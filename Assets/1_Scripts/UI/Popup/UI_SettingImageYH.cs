@@ -50,7 +50,7 @@ public class UI_SettingImageYH : UI_Popup
             string imgName = _characters[i].Img;
             GameObject item = Managers.UI.MakeSubItem<UI_Character>(GetObject((int)GameObjects.Content).transform, "Character").gameObject;
             item.BindEvent(() => {
-                OnClickedImage(item.GetComponent<UI_Character>()._characters);
+                OnClickedImage(item.GetComponent<UI_Character>());
              });
             UI_Character character = item.GetOrAddComponent<UI_Character>();
             if (character.Init())
@@ -69,9 +69,10 @@ public class UI_SettingImageYH : UI_Popup
         Managers.UI.ShowPopupUI<UI_SettingCharacterYH>();
     }
 
-    void OnClickedImage(Characters _characters)
+    void OnClickedImage(UI_Character uI_Character)
     {
-        Managers.User.SetCharacterInfo(_characters);
+        Managers.User.SetCharacterInfo(uI_Character._characters);
+        PlayerPrefs.SetInt("CharacterIdx", uI_Character._characterIdx);
         GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
     }
 }

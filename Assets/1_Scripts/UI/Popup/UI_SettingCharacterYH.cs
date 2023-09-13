@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class UI_SettingCharacterYH : UI_Popup
 {
+    #region Enums
     enum GameObjects
     {
         UserNameInputField,
@@ -17,6 +18,7 @@ public class UI_SettingCharacterYH : UI_Popup
     enum Texts
     {
         UserNameText,
+        ErrorToastText,
     }
 
     enum Images
@@ -30,7 +32,7 @@ public class UI_SettingCharacterYH : UI_Popup
         BackButton,
         SettingButton,
     }
-
+    #endregion
     void Start()
     {
         Init();
@@ -56,15 +58,14 @@ public class UI_SettingCharacterYH : UI_Popup
             OnClickedDoneButton();
         });
         GetButton((int)Buttons.BackButton).gameObject.BindEvent(() => {
-            //·Îºñ È­¸éÀ¸·Î ÀÌµ¿
+            //ï¿½Îºï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         });
         GetButton((int)Buttons.DoneButton).gameObject.BindEvent(() => {
-            //¼³Á¤ ÆË¾÷ ¶ç¿ì±â
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½ ï¿½ï¿½ï¿½ï¿½
         });
         GetImage((int)Images.CharacterImage).gameObject.BindEvent(() => {
             OnClickedCharacterImg();
         });
-
 
         // Sound
         //Managers.Sound.Play("");
@@ -74,19 +75,14 @@ public class UI_SettingCharacterYH : UI_Popup
 
     void OnClickedDoneButton()
     {
-        string nameString = GetText((int)Texts.UserNameText).text;
-
-        if (CheckValidName(nameString))
+        if (CheckValidName(GetObject((int)GameObjects.UserNameInputField).gameObject.GetComponentInChildren<TMP_InputField>().text))
         {
+            StartCoroutine(CONotValidNamePopup("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½."));
             Managers.User.SetName(GetText((int)Texts.UserNameText).text);
             PlayerPrefs.SetString("UserName", Managers.User.name);
+            GameObject.Find("UI_Lobby").GetComponent<UI_Lobby>().RefreshUI();
             Managers.UI.ClosePopupUI(this);
         }
-        else
-        {
-            StartCoroutine(CONotValidNamePopup());
-        }
-        
     }
 
     void OnClickedCharacterImg()
@@ -97,37 +93,33 @@ public class UI_SettingCharacterYH : UI_Popup
 
     bool CheckValidName(string name)
     {
-        int count = 0;
-        name.TrimEnd('\0', '\r', '\n', ' ');
+        bool result = true;
+        int length = name.Length;
 
-        foreach (char c in name)
+        if (length < 2 || length > 10)
         {
-            if (c != 32)
+            StartCoroutine(CONotValidNamePopup("ì´ë¦„ì€ 2 ~ 10 ê¸€ìì—¬ì•¼ í•©ë‹ˆë‹¤."));
+            return false;
+        }
+
+        string check = "`~!@#$%^&*()_+-+=[]{}:;\"\'\\,<.>/?";
+
+        for (int i = 0; i < length; i++)
+        {
+            if(check.Contains(name.Substring(i, 1)))
             {
-                count++;
-            }
-            else
-            {
+                StartCoroutine(CONotValidNamePopup("íŠ¹ìˆ˜ ë¬¸ìëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."));
+                result = false;
                 break;
-            }
-            Debug.Log(c);
-            if (!(char.IsLetter(c) || char.IsDigit(c) || (0xAC00 <= c && c <= 0xD7A3)))
-            {
-                return false;
-            }
+            }   
         }
-
-        Debug.Log(count);
-        if (count >= 2 && count <= 10)
-        {
-            return true;
-        }
-        return false;
+        return result;
     }
 
-    IEnumerator CONotValidNamePopup()
+    IEnumerator CONotValidNamePopup(string content)
     {
         GetObject((int)GameObjects.ErrorToast).SetActive(true);
+        GetText((int)Texts.ErrorToastText).text = content;
         yield return new WaitForSeconds(1.5f);
         GetObject((int)GameObjects.ErrorToast).SetActive(false);
     }
