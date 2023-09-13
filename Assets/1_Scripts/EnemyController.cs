@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using System;
-
+using System.Linq;
 
 public class EnemyController : MonoBehaviour
 {
@@ -34,6 +34,11 @@ public class EnemyController : MonoBehaviour
 
     public GameObject[] randEnemyArray = null;
     public int[] damageArray = null;
+
+    public bool IsAlive = true;
+    //
+    int cnt = 0;
+    //
 
     public void SetDamage()
     {
@@ -74,14 +79,11 @@ public class EnemyController : MonoBehaviour
         if (EnemySet != null)
         {
             var enemyGo = ObjectPoolManager.instance.Pool.Get();
-            Debug.Log($"Start Position : {EnemySet.StartPosition}");
-            Debug.Log($"Speed : {EnemySet.Speed}");
             enemyGo.SetActive(true);
             enemyGo.transform.position = EnemySet.StartPosition;
 
             // animator 적용
             int randNum = UnityEngine.Random.Range(0, randEnemyArray.Length);
-            Debug.Log($"randNum : {randNum} || stage1Length : {randEnemyArray.Length}");
             enemyGo.GetComponent<Animator>().runtimeAnimatorController = randEnemyArray[randNum].GetComponent<Animator>().runtimeAnimatorController;
             enemyGo.GetComponent<Enemy>().Damage = damageArray[randNum];
         }
@@ -90,6 +92,54 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         SetDict();
-        InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.GenCount);
+        //InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.GenCount);
+        //StartCoroutine(RandomGen());
+        StartCoroutine(RandomHelp());
+    }
+
+    private void Update()
+    {
+        if (cnt > 15)         // 스테이지 정지 조건 지금은 임시로 cnt로 달아둠. Player.HP나 시간에 연동할 예정
+        {
+            Time.timeScale = 0;
+        }
+    }
+
+    IEnumerator RandomGen()
+    {
+        float[] SecondDivide = new float[EnemySet.GenCount + 1];
+        for (int i = 0; i < EnemySet.GenCount; i++) 
+        {
+            float RandSecond = UnityEngine.Random.Range(0, 1f);
+            SecondDivide[i] = RandSecond;
+        }
+        SecondDivide[EnemySet.GenCount] = 1f;
+        SecondDivide = SecondDivide.OrderBy(second => second).ToArray();
+        yield return new WaitForSeconds(SecondDivide[0]);
+        for (int i = 1; i < EnemySet.GenCount; i++) 
+        {
+            SummonEnemy();
+            yield return new WaitForSeconds(SecondDivide[i] - SecondDivide[i-1]);
+        }
+    }
+
+    IEnumerator RandomHelp()
+    {
+        cnt += 1;
+        Debug.Log(cnt);
+        if (cnt > 15)
+        {
+            IsAlive = false;
+        }
+        StartCoroutine(RandomGen());
+        yield return new WaitForSeconds(1f);
+        if (IsAlive)
+        {
+            StartCoroutine(RandomHelp());
+        }
+        else
+        {
+            yield break;
+        }
     }
 }
