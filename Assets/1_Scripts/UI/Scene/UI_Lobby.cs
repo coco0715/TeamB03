@@ -49,12 +49,11 @@ public class UI_Lobby : UI_Scene
 
     public void RefreshUI()
     {
-        GetText((int)Texts.PlayerLevelText).text = $"Lv.01";
-        //$"{Managers.User.level}"
+        int unlockedStageNum = Managers.User.UnlockedStageNum;
+        GetText((int)Texts.PlayerLevelText).text = (unlockedStageNum < 9) ? $"Lv.0{unlockedStageNum}" : $"Lv.{unlockedStageNum}";
         GetText((int)Texts.PlayerNameText).text = Managers.User.name;
-        GetImage((int)Images.PlayerImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.img);
-        GetText((int)Texts.CoinText).text = "0";
-            //Managers.User.coin.ToString();
+        GetImage((int)Images.PlayerImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
+        GetText((int)Texts.CoinText).text = Managers.User.coin.ToString();
     }
 
     void OnClickedStartButton()
