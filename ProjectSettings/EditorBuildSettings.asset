@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/0_Scenes/DevScenes/HalimScene.unity
+    guid: 3dae9fb3a01d547d7bf6cb7a993c53ad
+  - enabled: 1
     path: Assets/0_Scenes/MainScene.unity
     guid: 14ea26aa51f5bd544a16eee599783d39
   - enabled: 1

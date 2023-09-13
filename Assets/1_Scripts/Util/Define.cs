@@ -19,7 +19,10 @@ public class Define
         GameScene,
         JiyeonScene,
         YoungHyunScene,
-        MainGameScene
+        HalimScene,
+        MainGameScene,
+        LobbyScene,
+        SelectStageScene,
     }
 
     public enum Sound
