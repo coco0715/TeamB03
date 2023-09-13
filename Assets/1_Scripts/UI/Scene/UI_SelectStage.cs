@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Jiyeon : UI_Scene
+public class UI_SelectStage : UI_Scene
 {
     enum GameObjects
     {
@@ -38,7 +38,7 @@ public class UI_Jiyeon : UI_Scene
             GameObject item = Managers.UI.MakeSubItem<UI_StageItem>(GetObject((int)GameObjects.Content).transform, "StageItem").gameObject;
             UI_StageItem stageItem = item.GetOrAddComponent<UI_StageItem>();
             if (stageItem.Init())
-                stageItem.SetInfo(stage, i+1);
+                stageItem.SetInfo(stage, i + 1);
         }
         return true;
     }
