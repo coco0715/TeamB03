@@ -87,6 +87,12 @@ public class UI_Result : UI_Scene
         {
             GetText((int)Texts.ResultText).text = "GAME WIN";
             GetButton((int)Buttons.NextLevelButton).gameObject.SetActive(true);
+            if(PlayerPrefs.GetInt($"Stage{Managers.GameManager.StageNum}MaxScore", 0) <= Managers.User.score)
+            {
+                PlayerPrefs.SetInt($"Stage{Managers.GameManager.StageNum}MaxScore", Managers.User.score);
+            }
+            PlayerPrefs.SetInt("UnlockedStageNum", ++Managers.User.UnlockedStageNum);
+            PlayerPrefs.SetInt("Coin", Managers.User.coin + Managers.User.score);
         }
         else
         {
