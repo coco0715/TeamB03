@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour
     // 기타
     // public Color color;         // Color 가 필요한가.. 의문
     public Sprite sprite;
+    public float TimeAccumulate;
 
 
     public void SetSpeed()
@@ -39,6 +40,11 @@ public class Projectile : MonoBehaviour
     public void SetCount()
     {
         GenCount = GenCoeff;
+    }
+
+    public void InitTime()
+    {
+        TimeAccumulate = 0f;
     }
 
     public Vector3 SetStartPosition()

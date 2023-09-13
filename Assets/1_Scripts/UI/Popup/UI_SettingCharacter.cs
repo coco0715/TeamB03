@@ -54,7 +54,7 @@ public class UI_SettingCharacter : UI_Popup
         BindButton(typeof(Buttons));
 
         GetObject((int)GameObjects.UserNameInputField).gameObject.GetComponentInChildren<TMP_InputField>().text = Managers.User.name;
-        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.img);
+        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
 
         GetComponent<Canvas>().sortingOrder = 10;
         GetObject((int)GameObjects.UserNameInputField).BindEvent(() => { 
@@ -87,7 +87,7 @@ public class UI_SettingCharacter : UI_Popup
         if (Managers.Scene.CurrentSceneType == Define.Scene.GameScene)
         {
             GameObject.Find("UI_Game").GetComponent<UI_Game>().SetOpnedSidePanel();
-            GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.img);
+            GameObject.Find("Player").GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
         }
         Managers.UI.ClosePopupUI(this);
     }

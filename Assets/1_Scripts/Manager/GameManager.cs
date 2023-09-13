@@ -8,7 +8,7 @@ using CharacterInformation;
 public class GameManager : MonoBehaviour
 {
     public List<Stage> Stages = new List<Stage>();
-    public List<CharacterInformation.CharacterInfo> Characters = new List<CharacterInformation.CharacterInfo>();
+    public List<Characters> Characters = new List<Characters>();
 
     public float Timer;
     public int StageNum;

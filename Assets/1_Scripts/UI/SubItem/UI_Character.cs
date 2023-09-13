@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CharacterInformation;
 
 public class UI_Character : UI_Base
 {
-    enum GameObjects
-    {
-        Character,
-    }
+    public Characters _characters;
     enum Images
     {
         Image,
@@ -19,14 +17,15 @@ public class UI_Character : UI_Base
         if (base.Init() == false)
             return false;
 
-        BindObject(typeof(GameObjects));
         BindImage(typeof(Images)); 
 
         return true;
     }
 
-    public void SetInfo(string img)
+    public void SetInfo(int idx)
     {
-        GetImage((int)Images.Image).sprite = Resources.Load<Sprite>("Sprites/InGame/" + img);
+        _characters = Managers.GameManager.Characters[idx];
+        PlayerPrefs.SetInt("CharacterIdx", idx);
+        GetImage((int)Images.Image).sprite = Resources.Load<Sprite>("Sprites/InGame/" + _characters.Img);
     }
 }

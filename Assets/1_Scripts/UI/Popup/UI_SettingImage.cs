@@ -61,8 +61,8 @@ public class UI_SettingImage : UI_Popup
                 OnClickedImage(imgName);
              });
             UI_Character character = item.GetOrAddComponent<UI_Character>();
-            if (character.Init())
-                character.SetInfo(imgName);
+            //if (character.Init())
+            //    character.SetInfo(imgName);
         }
 
         // Sound
@@ -73,8 +73,8 @@ public class UI_SettingImage : UI_Popup
 
     void OnClickedDoneButton()
     {
-        Managers.User.SetImg(GetImage((int)Images.CharacterImage).sprite.name.Replace("(UnityEngine.Sprite)", ""));
-        PlayerPrefs.SetString("UserImg", Managers.User.img);
+        //Managers.User.SetImg(GetImage((int)Images.CharacterImage).sprite.name.Replace("(UnityEngine.Sprite)", ""));
+        PlayerPrefs.SetString("UserImg", Managers.User.characterInfo.Img);
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_SettingCharacter>();
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CharacterInformation
 {
     [System.Serializable]
-    public class CharacterInfo
+    public class Characters
     {
         public int Hp;
         public string Img;
@@ -17,6 +17,6 @@ namespace CharacterInformation
     [System.Serializable]
     public class CharacterData
     {
-        public List<CharacterInfo> CharacterInfoList;
+        public List<Characters> CharacterInfoList;
     }
 }

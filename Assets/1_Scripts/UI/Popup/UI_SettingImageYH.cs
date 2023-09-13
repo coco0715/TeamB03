@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using ImageDatas;
+using CharacterInformation;
 
 public class UI_SettingImageYH : UI_Popup
 {
-    List<ImageData> imageData = new List<ImageData> ();
+    public List<Characters> _characters;
 
     enum GameObjects
     {
@@ -43,19 +44,17 @@ public class UI_SettingImageYH : UI_Popup
         });
         GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + PlayerPrefs.GetString("UserImg", "Jelly 0"));
 
-        imageData = Managers.JsonReader.ReadCharacterImageJson("Assets/Resources/Data/imageData.json").ImageDataList;
-
-        for (int i = 0; i < imageData.Count; i++)
+        _characters = Managers.GameManager.Characters;
+        for (int i = 0; i < _characters.Count; i++)
         {
-            string imgName = imageData[i].imgName;
+            string imgName = _characters[i].Img;
             GameObject item = Managers.UI.MakeSubItem<UI_Character>(GetObject((int)GameObjects.Content).transform, "Character").gameObject;
             item.BindEvent(() => {
-                //Managers.Sound.Play("ClickBtnEff");
-                OnClickedImage(imgName);
+                OnClickedImage(item.GetComponent<UI_Character>()._characters);
              });
             UI_Character character = item.GetOrAddComponent<UI_Character>();
             if (character.Init())
-                character.SetInfo(imgName);
+                character.SetInfo(i);
         }
 
         // Sound
@@ -66,14 +65,13 @@ public class UI_SettingImageYH : UI_Popup
 
     void OnClickedDoneButton()
     {
-        Managers.User.SetImg(GetImage((int)Images.CharacterImage).sprite.name.Replace("(UnityEngine.Sprite)", ""));
-        PlayerPrefs.SetString("UserImg", Managers.User.img);
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_SettingCharacterYH>();
     }
 
-    void OnClickedImage(string imgName)
+    void OnClickedImage(Characters _characters)
     {
-        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + imgName);
+        Managers.User.SetCharacterInfo(_characters);
+        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
     }
 }
