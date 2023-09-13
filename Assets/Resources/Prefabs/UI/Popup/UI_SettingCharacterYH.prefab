@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8611247879349081020}
   - component: {fileID: 4920794806514881155}
   m_Layer: 5
-  m_Name: ToastTxt
+  m_Name: ErrorToastText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD574\uB2F9 \uC774\uB984\uC740 \uC0AC\uC6A9\uC774 \uBD88\uAC00\uB2A5\uD569\uB2C8\uB2E4!"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d10054d718a10f4c81406940eb51c03, type: 2}
   m_sharedMaterial: {fileID: 8585896315936772826, guid: 4d10054d718a10f4c81406940eb51c03, type: 2}
