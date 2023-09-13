@@ -100,7 +100,7 @@ MonoBehaviour:
   m_fontSizeMin: 72
   m_fontSizeMax: 95
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCE90\uB9AD\uD130\uC124\uC815 "
+  m_text: "\uB2E4\uC2DC\uD558\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d10054d718a10f4c81406940eb51c03, type: 2}
   m_sharedMaterial: {fileID: 8585896315936772826, guid: 4d10054d718a10f4c81406940eb51c03, type: 2}
@@ -531,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8546402253465238252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1193,8 +1193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000015258789, y: -21}
+  m_SizeDelta: {x: 62.4269, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8155125615854593969
 CanvasRenderer:
@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCE90\uB9AD\uD130\uC124\uC815 "
+  m_text: "\uB2E4\uC74C \uC2A4\uD14C\uC774\uC9C0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d10054d718a10f4c81406940eb51c03, type: 2}
   m_sharedMaterial: {fileID: 8585896315936772826, guid: 4d10054d718a10f4c81406940eb51c03, type: 2}
@@ -1328,7 +1328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6020000364817973373
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_fontSizeMin: 72
   m_fontSizeMax: 95
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2062,7 +2062,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 15.309, y: 76.701}
+  m_AnchoredPosition: {x: 35, y: 76.701}
   m_SizeDelta: {x: 30.6179, y: 153.402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7580393676227989401

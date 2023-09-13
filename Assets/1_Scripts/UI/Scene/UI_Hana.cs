@@ -42,8 +42,6 @@ public class UI_Hana : UI_Scene
         GetButton((int)Buttons.NextLevelButton).gameObject.BindEvent(OnClickedNextLevelButton);
         GetButton((int)Buttons.LobbyButton).gameObject.BindEvent(OnClickedLobbyButton);
 
-        Managers.UI.ShowPopupUI<UI_SettingCharacter>();
-
         return true;
     }
 
