@@ -78,21 +78,25 @@ public class UI_Result : UI_Scene
 
     void OnClickedLobbyButton()
     {
+        Managers.User.score = 0;
+        Managers.User.Hp = Managers.User.characterInfo.Hp;
+        Managers.GameManager.IsStartedTimer = false;
         Managers.Scene.ChangeScene(Define.Scene.LobbyScene);
     }
 
     void SetResult()
     {
-        if(Managers.GameManager.Stages[Managers.GameManager.StageNum].ClearScore <= Managers.User.score)
+        Managers.User.coin += Managers.User.score;
+        PlayerPrefs.SetInt("Coin", Managers.User.coin);
+        if (PlayerPrefs.GetInt($"Stage{Managers.GameManager.StageNum}MaxScore", 0) <= Managers.User.score)
+        {
+            PlayerPrefs.SetInt($"Stage{Managers.GameManager.StageNum}MaxScore", Managers.User.score);
+        }
+        if (Managers.GameManager.Stages[Managers.GameManager.StageNum-1].ClearScore <= Managers.User.score)
         {
             GetText((int)Texts.ResultText).text = "GAME WIN";
             GetButton((int)Buttons.NextLevelButton).gameObject.SetActive(true);
-            if(PlayerPrefs.GetInt($"Stage{Managers.GameManager.StageNum}MaxScore", 0) <= Managers.User.score)
-            {
-                PlayerPrefs.SetInt($"Stage{Managers.GameManager.StageNum}MaxScore", Managers.User.score);
-            }
             PlayerPrefs.SetInt("UnlockedStageNum", ++Managers.User.UnlockedStageNum);
-            PlayerPrefs.SetInt("Coin", Managers.User.coin + Managers.User.score);
         }
         else
         {

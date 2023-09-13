@@ -57,6 +57,7 @@ public class UI_MainGame : UI_Scene
 
         MaxHp = Managers.User.characterInfo.Hp;
         Timer = 30f;
+        Time.timeScale = 1f;
         // Sound
         Managers.Sound.Clear();
         //Managers.Sound.Play("LobbyBgm", Define.Sound.Bgm);

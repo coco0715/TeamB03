@@ -31,7 +31,7 @@ public class UI_SelectStage : UI_Scene
 
         GetButton((int)Buttons.BackButton).gameObject.BindEvent(() => { Managers.Scene.ChangeScene(Define.Scene.LobbyScene); });
         #endregion
-
+        Managers.GameManager.Init();
         for (int i = 0; i < Managers.GameManager.Stages.Count; i++)
         {
             Stage stage = Managers.GameManager.Stages[i];

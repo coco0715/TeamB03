@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     void Awake()
     {
         _controller = GetComponent<TopDownController>();
-        //TODO : 나중에 지워야함
-        Managers.User.Init();
     }
     void Start()
     {
