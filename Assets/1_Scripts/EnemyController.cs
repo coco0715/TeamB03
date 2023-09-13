@@ -92,8 +92,9 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         SetDict();
+        EnemySet.SetEnemy();
         //InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.GenCount);
-        //StartCoroutine(RandomGen());
+        
         StartCoroutine(RandomHelp());
     }
 
@@ -119,7 +120,6 @@ public class EnemyController : MonoBehaviour
         for (int i = 1; i < EnemySet.GenCount; i++) 
         {
             SummonEnemy();
-            Debug.Log($"summoned : {cnt}");
             yield return new WaitForSeconds(SecondDivide[i] - SecondDivide[i-1]);
         }
     }
@@ -131,15 +131,13 @@ public class EnemyController : MonoBehaviour
         {
             IsAlive = false;
         }
-        StartCoroutine(RandomGen());
-        yield return new WaitForSeconds(1f);
-        if (IsAlive)
+        while (IsAlive)
         {
-            StartCoroutine(RandomHelp());
-        }
-        else
-        {
-            yield break;
+            yield return StartCoroutine(RandomGen());
+            if (!IsAlive)
+            {
+                yield break;
+            }
         }
     }
 }

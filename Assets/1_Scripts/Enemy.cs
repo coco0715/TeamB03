@@ -12,11 +12,11 @@ public class Enemy : Projectile
     public float EnemySpeed;
     public int Damage;
 
-    public Vector3 FirstPoint;
-    public Vector3 SecondPoint;
-    public Vector3 ThirdPoint;
+    private Vector3 FirstPoint;
+    private Vector3 SecondPoint;
+    private Vector3 ThirdPoint;
 
-    public float timeAccumulate;
+    //private float TimeAccumulate;
 
     public IObjectPool<GameObject> Pool { get; set; }
 
@@ -44,14 +44,14 @@ public class Enemy : Projectile
         SetEnemy();
         transform.position = StartPosition;
         SetRandomPoint();
-        timeAccumulate = 0f;
+        //TimeAccumulate = 0f;
     }
 
     private void Update()
     {
         if (Pool == null)
             return;
-        //timeAccumulate += Time.deltaTime;
+        //TimeAccumulate += Time.deltaTime;
         //linearPos(Speed, timeAccumulate);
         //BezierPos(Speed, timeAccumulate);
         
