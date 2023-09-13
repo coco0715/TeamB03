@@ -6,8 +6,12 @@ using StageInformation;
 public class Coin : Projectile
 {
     public float CoinSpeed;
+    public int CoinGenCount;
+    public Vector3 CoinScale;
+
     public Stage Stage;
     public int StageNum;
+
 
     public void SetCoin()
     {
@@ -29,11 +33,18 @@ public class Coin : Projectile
     }
     private void Start()
     {
+        StageNum = Managers.GameManager.StageNum;
+        Stage = Managers.GameManager.Stages[StageNum];
+        CoinSpeed = Stage.EnemySpeedCoeff * 1f;
+        CoinGenCount = (int)Stage.EnemyGenCountCoeff;
+        CoinScale = Stage.CoinScaleCoeff * new Vector3(1f, 1f, 1f);
+
         transform.position = StartPosition;
+        transform.localScale = CoinScale;
     }
     private void Update()
     {
-        transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
+        transform.position += new Vector3(0f, -1f, 0f) * CoinSpeed * Time.deltaTime;
         if (transform.position.y < -6f)
         {
             Destroy(this.gameObject);
