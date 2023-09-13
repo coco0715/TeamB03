@@ -82,6 +82,8 @@ public class EnemyController : MonoBehaviour
             enemyGo.SetActive(true);
             enemyGo.transform.position = EnemySet.StartPosition;
 
+            enemyGo.GetComponent<Enemy>().TimeAccumulate = 0f;
+
             // animator Àû¿ë
             int randNum = UnityEngine.Random.Range(0, randEnemyArray.Length);
             enemyGo.GetComponent<Animator>().runtimeAnimatorController = randEnemyArray[randNum].GetComponent<Animator>().runtimeAnimatorController;

@@ -16,8 +16,6 @@ public class Enemy : Projectile
     private Vector3 SecondPoint;
     private Vector3 ThirdPoint;
 
-    //private float TimeAccumulate;
-
     public IObjectPool<GameObject> Pool { get; set; }
 
     public void SetEnemy()
@@ -37,6 +35,8 @@ public class Enemy : Projectile
         SetScale();
 
         StartPosition = SetStartPosition();
+
+        InitTime();
     }
 
     private void Start()
@@ -44,18 +44,17 @@ public class Enemy : Projectile
         SetEnemy();
         transform.position = StartPosition;
         SetRandomPoint();
-        //TimeAccumulate = 0f;
     }
 
     private void Update()
     {
         if (Pool == null)
             return;
-        //TimeAccumulate += Time.deltaTime;
-        //linearPos(Speed, timeAccumulate);
-        //BezierPos(Speed, timeAccumulate);
-        
-        transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
+        TimeAccumulate += Time.deltaTime;
+        //LinearPos(Speed, TimeAccumulate);
+        BezierPos(Speed, TimeAccumulate);
+
+        //transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
 
         if (this != null && this.transform.position.y < -6f)
         {
@@ -63,9 +62,9 @@ public class Enemy : Projectile
         }
     }
 
-    private void linearPos(float speed, float time)
+    private void LinearPos(float speed, float time)
     {
-        transform.position = (Vector3.down * speed * time) + StartPosition;
+        transform.position = (speed * time * Vector3.down) + StartPosition;
     }
 
     private void SetRandomPoint()
