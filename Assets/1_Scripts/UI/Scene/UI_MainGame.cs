@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UI_MainGame : UI_Scene
 {
+    public float Timer = 30f;
+    bool initialized = false;
+    #region Enums
     enum Buttons
     {
         SettingButton,
@@ -19,6 +22,8 @@ public class UI_MainGame : UI_Scene
         TimeText,
         ValueText
     }
+    #endregion
+
     void Start()
     {
         Init();
@@ -26,9 +31,22 @@ public class UI_MainGame : UI_Scene
 
     void Update()
     {
-        
-    }
+        Timer -= Time.deltaTime;
+        GetText((int)Texts.TimeText).text = Timer.ToString("N2");
 
+        if (Timer < 10.0f)
+        {
+            GetText((int)Texts.TimeText).color = Color.red;
+        }
+
+        if (Timer <= 0.0f)
+        {
+            Timer = 0f;
+            GetText((int)Texts.TimeText).text = "0";
+            //Managers.UI.ShowPopupUI<UI_Result>();
+            Time.timeScale = 0.0f;
+        }
+    }
 
     public override bool Init()
     {
@@ -47,7 +65,7 @@ public class UI_MainGame : UI_Scene
         // Sound
         Managers.Sound.Clear();
         //Managers.Sound.Play("LobbyBgm", Define.Sound.Bgm);
-
+        initialized = true;
         return true;
     }
 
