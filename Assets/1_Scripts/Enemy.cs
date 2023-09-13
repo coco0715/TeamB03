@@ -4,13 +4,12 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
-using static UnityEngine.GraphicsBuffer;
 using StageInformation;
-
 
 public class Enemy : Projectile
 {
     public Stage Stage;
+
     public int StageNum;
     //Player player
     public float EnemySpeed;
@@ -139,13 +138,13 @@ public class Enemy : Projectile
         {
             Debug.Log("충돌");
             Debug.Log($"데미지 : {Damage}");
-            // player.HP -= Damage;
+            Managers.User.Hp -= Damage;
             Pool.Release(this.gameObject);
         }
-        // 이후, 플레이어 투사체 태그에 닿으면 사라지는 기능 구현
-        // else if (coll.gameObject.tag == "bullet")
-        //{
-        //    Destroy(coll.gameObject);
-        //}
+        //이후, 플레이어 투사체 태그에 닿으면 사라지는 기능 구현
+         else if (coll.gameObject.tag == "Bullet")
+        {
+            Destroy(coll.gameObject);
+        }
     }
 }
