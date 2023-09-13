@@ -81,7 +81,7 @@ public class UI_MainGame : UI_Scene
     {
         RefreshHeart();
         GetText((int)Texts.TimeText).text = Timer.ToString("N2");
-        GetText((int)Texts.ValueText).text = string.Format("{0:#,###}",Managers.User.score.ToString());
+        GetText((int)Texts.ValueText).text = string.Format("{0:#,###}",Managers.User._score.ToString());
     }
 
     void RefreshHeart()
