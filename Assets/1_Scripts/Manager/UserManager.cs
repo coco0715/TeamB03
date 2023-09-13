@@ -13,10 +13,12 @@ public class UserManager
     public int coin = PlayerPrefs.GetInt("Coin", 0);
     public int score = 0;
     public int UnlockedStageNum = PlayerPrefs.GetInt("UnlockedStageNum", 1);
+    public int Hp;
 
     public void Init()
     {
         characterInfo = Managers.GameManager.Characters[characterIdx];
+        Hp = characterInfo.Hp;
     }
 
     public void SetCharacterInfo(Characters _characterInfo)

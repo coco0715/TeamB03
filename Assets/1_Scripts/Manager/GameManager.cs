@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Characters> Characters = new List<Characters>();
 
     public int StageNum;
+    public bool IsStartedTimer = false;
 
     public void Init()
     {
