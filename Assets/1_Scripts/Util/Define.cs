@@ -23,6 +23,7 @@ public class Define
         MainGameScene,
         LobbyScene,
         SelectStageScene,
+        MainGameJYScene,
     }
 
     public enum Sound
