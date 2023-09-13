@@ -119,6 +119,7 @@ public class EnemyController : MonoBehaviour
         for (int i = 1; i < EnemySet.GenCount; i++) 
         {
             SummonEnemy();
+            Debug.Log($"summoned : {cnt}");
             yield return new WaitForSeconds(SecondDivide[i] - SecondDivide[i-1]);
         }
     }
@@ -126,7 +127,6 @@ public class EnemyController : MonoBehaviour
     IEnumerator RandomHelp()
     {
         cnt += 1;
-        Debug.Log(cnt);
         if (cnt > 15)
         {
             IsAlive = false;

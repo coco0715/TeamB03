@@ -51,10 +51,11 @@ public class Enemy : Projectile
     {
         if (Pool == null)
             return;
-        timeAccumulate += Time.deltaTime;
-        linearPos(Speed, timeAccumulate);
+        //timeAccumulate += Time.deltaTime;
+        //linearPos(Speed, timeAccumulate);
         //BezierPos(Speed, timeAccumulate);
-        //transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
+        
+        transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
 
         if (this != null && this.transform.position.y < -6f)
         {
@@ -74,7 +75,7 @@ public class Enemy : Projectile
         ThirdPoint = new Vector3(StartPosition.x, StartPosition.y - 12, 0);
     }
     private void BezierPos(float speed, float time)
-    {
+    {       
         Vector3[] points = new Vector3[4];
         // !! Random 값을 줘버리면, 매 프레임마다 값이 변함.
         points[0] = StartPosition;
@@ -82,7 +83,7 @@ public class Enemy : Projectile
         points[2] = SecondPoint;
         points[3] = ThirdPoint;
         Vector3 bezierPosition;
-        float t = (time / 10);
+        float t = (time / (12 * 1.7f /speed));
         // Math.Sin || Math.Cos || PingPong (등속도) ==
         Vector3 first = Vector3.Lerp(points[0], points[1], t);
         Vector3 Second = Vector3.Lerp(points[1], points[2], t);
