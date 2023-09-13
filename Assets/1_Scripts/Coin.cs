@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StageInformation;
 
 public class Coin : Projectile
 {
     public float CoinSpeed;
-    //public int Score;
+    public Stage Stage;
+    public int StageNum;
 
     public void SetCoin()
     {
