@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 2777418375539462030}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2807642344131739391
 CapsuleCollider2D:
@@ -109,6 +109,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e01de1a25794f41be07f5894ff4611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletImage: {fileID: 7968382280504014242}
+  Style: 0
+  BulletCollections:
+  - PrefabName: bulletBomb
+    BulletPrefab: {fileID: 7517560576698161022, guid: add1a2a4c4de85f47a922e51c634d179, type: 3}
+  - PrefabName: bulletShark
+    BulletPrefab: {fileID: 6329451784036231361, guid: 45341c76237e053458618c9c53d325a8, type: 3}
+  - PrefabName: bulletSimple
+    BulletPrefab: {fileID: 9021756496588052389, guid: 0ba94f912d80ee34483b11f2bb51dbe4, type: 3}
+  - PrefabName: bulletSingle
+    BulletPrefab: {fileID: 600274708615729305, guid: d2ce8331cb374e641a7e62a4a23ac4f0, type: 3}
+  BulletArray: []
 --- !u!1 &7968382280504014242
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2777418375539462030}
   - component: {fileID: 6302588073183771996}
+  - component: {fileID: 4804698378717608053}
   m_Layer: 0
   m_Name: BulletImage
   m_TagString: Untagged
@@ -193,3 +206,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4804698378717608053
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968382280504014242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

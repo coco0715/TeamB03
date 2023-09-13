@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,8 +10,42 @@ public class Bullet : MonoBehaviour
     private float BulletSpeed = 2;
     private Rigidbody2D M_Rigidbody2D;
     Vector2 rotatedDirectionVector;
+    public GameObject BulletImage;
+    public int Style = 0;
+
+    [Serializable]
+    public class BulletCollection
+    {
+        public string PrefabName;
+        public GameObject BulletPrefab;
+    }
+    [SerializeField] BulletCollection[] BulletCollections;
+
+    public GameObject[] BulletArray = null;
+
+    public void SetArray()
+    {
+        for (int i = 0; i < BulletCollections.Length; i++)
+        {
+            Array.Resize(ref BulletArray, BulletArray.Length + 1);
+            BulletArray[BulletArray.Length - 1] = BulletCollections[i].BulletPrefab;
+        }
+    }
+
     void Start()
     {
+        Style = 0;
+        if (Style == 2)
+        {
+            BulletImage.transform.localEulerAngles = new Vector3 (0f, 0f, 0f);
+        }
+        SetArray();
+        Debug.Log("!!!!!!! Style : " + Style);
+        BulletImage.GetComponent<SpriteRenderer>().sprite = BulletArray[Style].GetComponent<SpriteRenderer>().sprite;
+        if (BulletArray[Style].GetComponent<Animator>().runtimeAnimatorController != null)
+        {
+            BulletImage.GetComponent<Animator>().runtimeAnimatorController = BulletArray[Style].GetComponent<Animator>().runtimeAnimatorController;
+        }
         //총알 사라지게
         Invoke("DestroyBullet", 10);
         M_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -20,7 +56,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         //총알 앞으로 가게 함
-        M_Rigidbody2D.velocity = rotatedDirectionVector * BulletSpeed;    
+        M_Rigidbody2D.velocity = rotatedDirectionVector * BulletSpeed;
     }
 
     public void DestroyBullet()
