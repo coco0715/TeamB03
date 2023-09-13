@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < PlayerPrefs.GetInt("UnlockedStageNum", 1); i++)
         {
             Stages[i].IsLocked = false;
+            Stages[i].MaxScore = PlayerPrefs.GetInt($"Stage{i+1}MaxScore", 0);
         }
     }
 }

@@ -40,8 +40,8 @@ public class Enemy : Projectile
     private void Awake()
     {
         Managers.GameManager.Init();
-        StageNum = Managers.GameManager.StageNum;
-        Stage = Managers.GameManager.Stages[Managers.GameManager.StageNum];
+        StageNum = Managers.GameManager.StageNum - 1;
+        Stage = Managers.GameManager.Stages[StageNum];
 
         GenCoeff = (int)Stage.EnemyGenCountCoeff;
         SpeedCoeff = Stage.EnemySpeedCoeff;

@@ -9,7 +9,7 @@ public class MainGameScene : BaseScene
         if (base.Init() == false)
             return false;
 
-        SceneType = Define.Scene.MainScene;
+        SceneType = Define.Scene.MainGameScene;
         Managers.UI.ShowSceneUI<UI_MainGame>();
         Debug.Log("Enter MainGame");
         return true;

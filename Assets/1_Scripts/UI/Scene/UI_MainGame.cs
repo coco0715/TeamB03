@@ -32,6 +32,10 @@ public class UI_MainGame : UI_Scene
 
     void Update()
     {
+        if(Managers.User.Hp <= 0)
+        {
+            Managers.Scene.ChangeScene(Define.Scene.ResultScene);
+        }
         if(Managers.GameManager.IsStartedTimer)
         {
             CountingTimer();
@@ -52,6 +56,8 @@ public class UI_MainGame : UI_Scene
         RefreshHeart();
 
         MaxHp = Managers.User.characterInfo.Hp;
+        Timer = 30f;
+        Time.timeScale = 1f;
         // Sound
         Managers.Sound.Clear();
         //Managers.Sound.Play("LobbyBgm", Define.Sound.Bgm);
@@ -72,7 +78,7 @@ public class UI_MainGame : UI_Scene
         {
             Timer = 0f;
             GetText((int)Texts.TimeText).text = "0";
-            //Managers.UI.ShowPopupUI<UI_Result>();
+            Managers.Scene.ChangeScene(Define.Scene.ResultScene);
             Time.timeScale = 0.0f;
         }
     }
@@ -81,7 +87,7 @@ public class UI_MainGame : UI_Scene
     {
         RefreshHeart();
         GetText((int)Texts.TimeText).text = Timer.ToString("N2");
-        GetText((int)Texts.ValueText).text = string.Format("{0:#,###}",Managers.User._score.ToString());
+        GetText((int)Texts.ValueText).text = string.Format("{0:#,###}",Managers.User.score.ToString());
     }
 
     void RefreshHeart()
@@ -97,7 +103,7 @@ public class UI_MainGame : UI_Scene
             {
                 if(Managers.User.Hp < i)
                 {
-                    heart.SetInfo(false);
+                    heart.SetInfo(true);
                 }
             }
         }

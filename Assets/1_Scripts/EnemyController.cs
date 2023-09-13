@@ -114,8 +114,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         Managers.GameManager.Init();
-        StageNum = Managers.GameManager.StageNum;
-        Stage = Managers.GameManager.Stages[Managers.GameManager.StageNum];
+        StageNum = Managers.GameManager.StageNum-1;
+        Stage = Managers.GameManager.Stages[StageNum];
         SetDict();
         EnemySet.SetEnemy();
         //InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.GenCount);

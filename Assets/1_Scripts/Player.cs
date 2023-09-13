@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     void Awake()
     {
         _controller = GetComponent<TopDownController>();
-        //TODO : 나중에 지워야함
-        Managers.User.Init();
     }
     void Start()
     {
@@ -46,6 +44,14 @@ public class Player : MonoBehaviour
             GameObject bullet = Instantiate(Bullet, projectileSpawnPosition.position, projectileSpawnPosition.rotation);
             bullet.transform.localScale = new Vector3(characters.ProjectileSize, characters.ProjectileSize, 1);
             yield return new WaitForSeconds(characters.AttackSpeed);
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Coin")
+        {
+            Managers.User.PlusScore();
         }
     }
 }

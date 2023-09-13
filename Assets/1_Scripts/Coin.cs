@@ -33,7 +33,7 @@ public class Coin : Projectile
     }
     private void Start()
     {
-        StageNum = Managers.GameManager.StageNum;
+        StageNum = Managers.GameManager.StageNum - 1;
         Stage = Managers.GameManager.Stages[StageNum];
         CoinSpeed = Stage.EnemySpeedCoeff * 1f;
         CoinGenCount = (int)Stage.EnemyGenCountCoeff;

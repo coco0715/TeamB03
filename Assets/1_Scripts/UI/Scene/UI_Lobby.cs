@@ -71,6 +71,6 @@ public class UI_Lobby : UI_Scene
     void OnClickedSettingCharacterButton()
     {
         //Managers.Sound.Play("ClickBtnEff"); 
-        Managers.UI.ShowPopupUI<UI_SettingCharacterYH>();
+        Managers.UI.ShowPopupUI<UI_SettingCharacter>();
     }
 }

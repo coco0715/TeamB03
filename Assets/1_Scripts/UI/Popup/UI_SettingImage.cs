@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using ImageDatas;
+using CharacterInformation;
 
 public class UI_SettingImage : UI_Popup
 {
-    List<ImageData> imageData = new List<ImageData> ();
+    public List<Characters> _characters;
 
     enum GameObjects
     {
         Content,
-    }
-
-    enum Texts
-    {
-        TitleText,
     }
 
     enum Images
@@ -39,30 +35,26 @@ public class UI_SettingImage : UI_Popup
             return false;
 
         BindObject(typeof(GameObjects));
-        BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
 
-        GetText((int)Texts.TitleText).text = "캐릭터 변경";
         GetButton((int)Buttons.DoneButton).gameObject.BindEvent(() => {
             //Managers.Sound.Play("ClickBtnEff"); 
             OnClickedDoneButton();
         });
         GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + PlayerPrefs.GetString("UserImg", "Jelly 0"));
 
-        imageData = Managers.JsonReader.ReadCharacterImageJson("Assets/Resources/Data/imageData.json").ImageDataList;
-
-        for (int i = 0; i < imageData.Count; i++)
+        _characters = Managers.GameManager.Characters;
+        for (int i = 0; i < _characters.Count; i++)
         {
-            string imgName = imageData[i].imgName;
+            string imgName = _characters[i].Img;
             GameObject item = Managers.UI.MakeSubItem<UI_Character>(GetObject((int)GameObjects.Content).transform, "Character").gameObject;
             item.BindEvent(() => {
-                //Managers.Sound.Play("ClickBtnEff");
-                OnClickedImage(imgName);
-             });
+                OnClickedImage(item.GetComponent<UI_Character>());
+            });
             UI_Character character = item.GetOrAddComponent<UI_Character>();
-            //if (character.Init())
-            //    character.SetInfo(imgName);
+            if (character.Init())
+                character.SetInfo(i);
         }
 
         // Sound
@@ -73,14 +65,14 @@ public class UI_SettingImage : UI_Popup
 
     void OnClickedDoneButton()
     {
-        //Managers.User.SetImg(GetImage((int)Images.CharacterImage).sprite.name.Replace("(UnityEngine.Sprite)", ""));
-        PlayerPrefs.SetString("UserImg", Managers.User.characterInfo.Img);
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_SettingCharacter>();
     }
 
-    void OnClickedImage(string imgName)
+    void OnClickedImage(UI_Character uI_Character)
     {
-        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + imgName);
+        Managers.User.SetCharacterInfo(uI_Character._characters);
+        PlayerPrefs.SetInt("CharacterIdx", uI_Character._characterIdx);
+        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
     }
 }

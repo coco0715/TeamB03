@@ -32,7 +32,9 @@ public class UI_StageItem : UI_Base
     {
         if(stage.IsLocked)
         {
-            GetImage((int)Images.LockedImage).gameObject.BindEvent(() => { Debug.Log("LockedStage"); });
+            GetImage((int)Images.LockedImage).gameObject.BindEvent(() => {
+                Debug.Log("Locked");
+            });
         }
         else
         {
@@ -43,7 +45,7 @@ public class UI_StageItem : UI_Base
             GetImage((int)Images.UnlockedImage).gameObject.BindEvent(() =>
             {
                 Managers.GameManager.StageNum = stageNum;
-                Managers.Scene.ChangeScene(Define.Scene.MainGameJYScene);
+                Managers.Scene.ChangeScene(Define.Scene.MainGameScene);
             });
         }
     }

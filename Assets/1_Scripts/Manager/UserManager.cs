@@ -2,6 +2,7 @@ using CharacterInformation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.TextCore.Text;
@@ -13,41 +14,45 @@ public class UserManager
     public Characters characterInfo;
     public int coin = PlayerPrefs.GetInt("Coin", 0);
 
-    public int _score = 0;
-    static int _comboCount = 0;
+    public int score = 0;
+    static int comboCount = 0;
 
     public int UnlockedStageNum = PlayerPrefs.GetInt("UnlockedStageNum", 1);
     public int Hp;
 
     public void initScore()
     {
-        _score = 0;
+        score = 0;
     }
 
-    public void plusScore()
+    public void PlusScore()
     {
-        if(_comboCount == 0)
+        if(comboCount == 0)
         {
-            _score += 10;
+            score += 10;
         }
-        else if(_comboCount == 1)
+        else if(comboCount == 1)
         {
-            _score += 15;
+            score += 15;
         }
-        else if (_comboCount == 2)
+        else if (comboCount == 2)
         {
-            _score += 17;
+            score += 17;
         }
-        else if (_comboCount >= 3)
+        else if (comboCount >= 3)
         {
-            _score += 20;
+            score += 20;
         }
-        _comboCount++;
+        comboCount++;
+        if(score > 10000)
+        {
+            score = 10000;
+        }
     }
 
     public void NotCombo()
     {
-        _comboCount = 0;
+        comboCount = 0;
     }
 
     public void Init()
