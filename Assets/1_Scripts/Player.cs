@@ -48,4 +48,12 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(characters.AttackSpeed);
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Coin")
+        {
+            Managers.User.PlusScore();
+        }
+    }
 }

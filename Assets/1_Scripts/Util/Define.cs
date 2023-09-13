@@ -15,16 +15,10 @@ public class Define
     public enum Scene
     {
         Unknown,
-        MainScene,
-        GameScene,
-        JiyeonScene,
-        YoungHyunScene,
-        HalimScene,
         MainGameScene,
         LobbyScene,
         SelectStageScene,
-        MainGameJYScene,
-        HanaScene,
+        ResultScene,
     }
 
     public enum Sound

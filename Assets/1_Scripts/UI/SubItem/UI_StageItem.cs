@@ -43,7 +43,7 @@ public class UI_StageItem : UI_Base
             GetImage((int)Images.UnlockedImage).gameObject.BindEvent(() =>
             {
                 Managers.GameManager.StageNum = stageNum;
-                Managers.Scene.ChangeScene(Define.Scene.MainGameJYScene);
+                Managers.Scene.ChangeScene(Define.Scene.MainGameScene);
             });
         }
     }

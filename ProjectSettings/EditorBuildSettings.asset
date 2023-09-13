@@ -6,24 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0_Scenes/DevScenes/HanaScene.unity
-    guid: dded9c90b87ab7d49805f253947b258f
-  - enabled: 0
-    path: Assets/0_Scenes/DevScenes/HalimScene.unity
-    guid: 3dae9fb3a01d547d7bf6cb7a993c53ad
-  - enabled: 1
     path: Assets/0_Scenes/LobbyScene.unity
     guid: fcca16eff87875f4fa3a6fd2216660cf
-  - enabled: 0
-    path: Assets/0_Scenes/DevScenes/JiyeonScene.unity
-    guid: 93311a338a779074a96c5c0d292f2505
   - enabled: 1
     path: Assets/0_Scenes/SelectStageScene.unity
     guid: ebced9ece1b27694abc4a1e773095356
   - enabled: 1
-    path: Assets/0_Scenes/MainScene.unity
-    guid: 14ea26aa51f5bd544a16eee599783d39
+    path: Assets/0_Scenes/DevScenes/MainGameScene.unity
+    guid: fc3302fcafbf8c645b83702ea13121c8
   - enabled: 1
-    path: Assets/0_Scenes/DevScenes/GameScene.unity
-    guid: f5f99d76265b3d74e8b1e2632b68d2bb
+    path: Assets/0_Scenes/ResultScene.unity
+    guid: dded9c90b87ab7d49805f253947b258f
   m_configObjects: {}
