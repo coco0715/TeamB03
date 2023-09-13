@@ -97,19 +97,12 @@ public class UI_SettingCharacterYH : UI_Popup
 
     bool CheckValidName(string name)
     {
+        Debug.Log(name);
+        name = name.Trim();
         int count = 0;
-        name.TrimEnd('\0', '\r', '\n', ' ');
-
+        Debug.Log(name.Length);
         foreach (char c in name)
         {
-            if (c != 32)
-            {
-                count++;
-            }
-            else
-            {
-                break;
-            }
             Debug.Log(c);
             if (!(char.IsLetter(c) || char.IsDigit(c) || (0xAC00 <= c && c <= 0xD7A3)))
             {
