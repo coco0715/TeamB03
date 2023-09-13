@@ -26,7 +26,7 @@ public class ObjectPoolManager : MonoBehaviour
         }
         Init();
     }
-    private void Init()
+    public void Init()
     {
         Pool = new ObjectPool<GameObject>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool,
         OnDestroyPoolObject, true, defaultCapacity, maxPoolSize);

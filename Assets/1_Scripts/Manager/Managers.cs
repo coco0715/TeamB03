@@ -18,6 +18,7 @@ public class Managers : MonoBehaviour
     private static SoundManager s_soundManager = new SoundManager();
     private static UserManager s_userManager = new UserManager();
     private static JsonReader s_jsonReader = new JsonReader();
+    private static ObjectPoolManager s_objectPoolManager = new ObjectPoolManager();
 
     public static GameManager GameManager { get { Init(); return s_gameManager; } }
     public static ResourceManager Resource { get { Init(); return s_resourceManager; } }
@@ -26,7 +27,7 @@ public class Managers : MonoBehaviour
     public static SoundManager Sound { get { Init(); return s_soundManager; } }
     public static UserManager User { get { return s_userManager; } }
     public static JsonReader JsonReader { get { return s_jsonReader; } }
-
+    public static ObjectPoolManager ObjectPoolManager { get { Init();  return s_objectPoolManager; } }
     private void Start()
     {
         Init();
@@ -45,6 +46,7 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
 
+            s_objectPoolManager.Init();
             s_gameManager.Init();
             s_resourceManager.Init();
             s_soundManager.Init();
