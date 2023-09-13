@@ -5,10 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using static UnityEngine.GraphicsBuffer;
+using StageInformation;
+
 
 public class Enemy : Projectile
-{ 
-    //Stage stage
+{
+    public Stage Stage;
+    public int StageNum;
     //Player player
     public float EnemySpeed;
     public int Damage;
@@ -21,18 +24,13 @@ public class Enemy : Projectile
 
     public void SetEnemy()
     {
-        // GenCoeff = Managers.GameManagers.stages[Managers.GameManager.stageNum].GenCountCoeff;
-        // SetCount();
-        GenCount = 3;
-
-        // SpeedCoeff = Stage.EnemySpeedCoeff;
+        //GenCoeff = 1.0f;
+        SetCount();
         EnemySpeed = 2f;     // 왜 위에서는 안되고 여기서는 되는가.
         Speed = EnemySpeed;
-        SpeedCoeff = 1.0f;
+        //SpeedCoeff = 1.0f;
         SetSpeed();
-
-        // ScaleCoeff = Stage.EnemyScaleCoeff;
-        ScaleCoeff = 1.0f;
+        //ScaleCoeff = 1.0f;
         SetScale();
 
         StartPosition = SetStartPosition();
@@ -40,12 +38,31 @@ public class Enemy : Projectile
         InitTime();
     }
 
-    private void Start()
+    private void Awake()
     {
+        Managers.GameManager.Init();
+        StageNum = Managers.GameManager.StageNum;
+        Stage = Managers.GameManager.Stages[Managers.GameManager.StageNum];
+
+        GenCoeff = (int)Stage.EnemyGenCountCoeff;
+        SpeedCoeff = Stage.EnemySpeedCoeff;
+        ScaleCoeff = Stage.EnemyScaleCoeff;
+
         SetEnemy();
         transform.position = StartPosition;
         SetRandomPoint();
+
+        Debug.Log(StartPosition);
+        Debug.Log(Speed);
+        Debug.Log(_Scale);
     }
+
+    //private void Start()
+    //{
+    //    SetEnemy();
+    //    transform.position = StartPosition;
+    //    SetRandomPoint();
+    //}
 
     private void Update()
     {

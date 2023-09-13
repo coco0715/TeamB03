@@ -4,10 +4,18 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using System;
 using System.Linq;
+using StageInformation;
 
 public class EnemyController : MonoBehaviour
 {
     public Enemy EnemySet;
+    public StageInformation.Stage Stage;
+    public int StageNum;
+
+    public int GenCount;
+    public float Speed;
+    public Vector3 Scale;
+
     [Serializable]
     public class Stage1SpriteInfo
     {
@@ -45,9 +53,15 @@ public class EnemyController : MonoBehaviour
         // 유니티에서 직접 집어넣는게 나은가..
     }
 
+    public void GetEnemyInfo()
+    {
+        GenCount = (int)Stage.EnemyGenCountCoeff;
+        Speed = Stage.EnemySpeedCoeff * 1.5f;
+        Scale = Stage.EnemyScaleCoeff * new Vector3(1f, 1f, 1f);
+    }
     void SetDict()
     {
-        if (stage1SpriteInfos != null) 
+        if (stage1SpriteInfos != null && StageNum >= 0)
         {
             for (int i = 0; i < stage1SpriteInfos.Length; i++) // stage 숫자가 1보다 작거나 같다면의 조건 추가
             {
@@ -56,6 +70,9 @@ public class EnemyController : MonoBehaviour
                 Array.Resize(ref damageArray, damageArray.Length + 1);
                 damageArray[damageArray.Length - 1] = 1;
             }
+        }
+        if (stage2SpriteInfos != null && StageNum >= 1)
+        {
             for (int i = 0; i < stage2SpriteInfos.Length; i++) // stage 숫자가 2보다 작거나 같다면의 조건 추가
             {
                 Array.Resize(ref randEnemyArray, randEnemyArray.Length + 1);
@@ -63,6 +80,9 @@ public class EnemyController : MonoBehaviour
                 Array.Resize(ref damageArray, damageArray.Length + 1);
                 damageArray[damageArray.Length - 1] = 2;       // stage별 데이지 변화 필요시 변경
             }
+        }
+        if (Stage3SpriteInfos != null && StageNum >= 2)
+        { 
             for (int i = 0; i < Stage3SpriteInfos.Length; i++) // stage 숫자가 3보다 작거나 같다면의 조건 추가
             {
                 Array.Resize(ref randEnemyArray, randEnemyArray.Length + 1);
@@ -93,6 +113,9 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        Managers.GameManager.Init();
+        StageNum = Managers.GameManager.StageNum;
+        Stage = Managers.GameManager.Stages[Managers.GameManager.StageNum];
         SetDict();
         EnemySet.SetEnemy();
         //InvokeRepeating("SummonEnemy", 1f, 1f / EnemySet.GenCount);
@@ -110,16 +133,23 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator RandomGen()
     {
-        float[] SecondDivide = new float[EnemySet.GenCount + 1];
-        for (int i = 0; i < EnemySet.GenCount; i++) 
+        // EnemySet 프리팹의 정보가 아닌, 게임매니저의 정보를 가져오게끔...
+        // json을 파싱할 때, enemyController에 넣어둠..
+        // 혹은 파싱해서 게임매니저의 변수로 갖고 있어야함.
+        // 이후 enemycontroller에서 gameManager의 값을 참조....
+        // 플레이 상황에서 프리팹에 정보를 넣거나 가져올수 없다.,
+        // 필요한 데이터는 게임매니저에서....
+        GetEnemyInfo();
+        float[] SecondDivide = new float[GenCount + 1];
+        for (int i = 0; i < GenCount; i++) 
         {
             float RandSecond = UnityEngine.Random.Range(0, 1f);
             SecondDivide[i] = RandSecond;
         }
-        SecondDivide[EnemySet.GenCount] = 1f;
+        SecondDivide[GenCount] = 1f;
         SecondDivide = SecondDivide.OrderBy(second => second).ToArray();
         yield return new WaitForSeconds(SecondDivide[0]);
-        for (int i = 1; i < EnemySet.GenCount; i++) 
+        for (int i = 1; i < GenCount; i++) 
         {
             SummonEnemy();
             yield return new WaitForSeconds(SecondDivide[i] - SecondDivide[i-1]);

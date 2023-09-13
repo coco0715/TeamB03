@@ -43,7 +43,8 @@ public class ObjectPoolManager : MonoBehaviour
     private GameObject CreatePooledItem()
     {
         GameObject poolGo = Instantiate(enemyPrefab);
-        poolGo.GetComponent<Enemy>().Pool = this.Pool;
+        Enemy enemy = poolGo.GetComponent<Enemy>();
+        enemy.Pool = this.Pool;
         return poolGo;
     }
 

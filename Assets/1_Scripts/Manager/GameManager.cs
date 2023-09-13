@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Characters> Characters = new List<Characters>();
 
     //public float Timer = 30f;
-    public int StageNum;
+    public int StageNum = 0;
 
     public void Init()
     {
