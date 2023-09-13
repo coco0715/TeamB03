@@ -46,7 +46,7 @@ public class UI_Main : UI_Scene
     public void RefreshUI()
     {
         GetText((int)Texts.NameText).text = Managers.User.name;
-        GetImage((int)Images.PlayerImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.img);
+        GetImage((int)Images.PlayerImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
     }
 
     void OnClickedEnterButton()

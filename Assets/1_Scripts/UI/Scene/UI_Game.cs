@@ -83,7 +83,7 @@ public class UI_Game : UI_Scene
         GameObject playerItem = Managers.UI.MakeSubItem<UI_InGameCharacter>(GetObject((int)GameObjects.Content).transform, "InGameCharacter").gameObject;
         UI_InGameCharacter player = playerItem.GetOrAddComponent<UI_InGameCharacter>();
         if (player.Init())
-            player.SetInfo("Sprites/InGame/" + Managers.User.img, Managers.User.name);
+            player.SetInfo("Sprites/InGame/" + Managers.User.characterInfo.Img, Managers.User.name);
 
         for (int i = 0; i < npcData.Count; i++)
         {

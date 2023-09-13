@@ -6,6 +6,6 @@ public class Player : MonoBehaviour
 {
     void Start()
     {
-        this.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.img);
+        this.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
     }
 }
