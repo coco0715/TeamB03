@@ -145,6 +145,7 @@ public class Enemy : Projectile
          else if (coll.gameObject.tag == "Bullet")
         {
             Destroy(coll.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
