@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using StageInformation;
 public class Projectile : MonoBehaviour
 {
-    //Stage stage                  // Stage 클래스 추가시 주석 해제
-
     // 소환 갯수
     public int GenCoeff;
     public int GenCount;
