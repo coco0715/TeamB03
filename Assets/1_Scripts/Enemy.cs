@@ -57,8 +57,9 @@ public class Enemy : Projectile
 
         //transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
 
-        if (this != null && this.transform.position.y < -6f)
+        if (this != null && this.transform.position.y < -5.5f)
         {
+            Debug.Log("Down");
             Pool.Release(this.gameObject);
         }
     }
