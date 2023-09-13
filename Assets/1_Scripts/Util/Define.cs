@@ -19,7 +19,10 @@ public class Define
         GameScene,
         JiyeonScene,
         YoungHyunScene,
+        HalimScene,
         MainGameScene,
+        LobbyScene,
+        SelectStageScene,
         HanaScene,
     }
 

@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 9117253175544814662}
   - component: {fileID: 9179165025125990345}
   m_Layer: 5
-  m_Name: UI_Jiyeon
+  m_Name: UI_SelectStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
