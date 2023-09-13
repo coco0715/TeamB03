@@ -60,7 +60,8 @@ public class UI_Lobby : UI_Scene
     void OnClickedStartButton()
     {
         //Managers.Sound.Play("ClickBtnEff"); 
-        Managers.Scene.ChangeScene(Define.Scene.SelectStageScene);
+        //Managers.Scene.ChangeScene(Define.Scene.SelectStageScene);
+        Managers.Scene.ChangeScene(Define.Scene.JiyeonScene);
     }
 
     void OnClickedQuiteButton()

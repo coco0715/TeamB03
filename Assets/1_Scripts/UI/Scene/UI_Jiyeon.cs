@@ -25,10 +25,13 @@ public class UI_Jiyeon : UI_Scene
         if (base.Init() == false)
             return false;
 
+        #region Bind
         BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
 
-        GetButton((int)Buttons.BackButton).gameObject.BindEvent(() => { Managers.Scene.ChangeScene(Define.Scene.MainScene); });
+        GetButton((int)Buttons.BackButton).gameObject.BindEvent(() => { Managers.Scene.ChangeScene(Define.Scene.LobbyScene); });
+        #endregion
+
         for (int i = 0; i < Managers.GameManager.Stages.Count; i++)
         {
             Stage stage = Managers.GameManager.Stages[i];
