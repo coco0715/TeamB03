@@ -11,6 +11,11 @@ public class Enemy : Projectile
     //Player player
     public float EnemySpeed;
     public int Damage;
+
+    public Vector3 FirstPoint;
+    public Vector3 SecondPoint;
+    public Vector3 ThirdPoint;
+
     public float timeAccumulate;
 
     public IObjectPool<GameObject> Pool { get; set; }
@@ -38,48 +43,56 @@ public class Enemy : Projectile
     {
         SetEnemy();
         transform.position = StartPosition;
-
-        //timeAccumulate = 0f;
+        SetRandomPoint();
+        timeAccumulate = 0f;
     }
 
     private void Update()
     {
         if (Pool == null)
             return;
-        //timeAccumulate += Time.deltaTime;
-        //linearPos(Speed, timeAccumulate);
+        timeAccumulate += Time.deltaTime;
+        linearPos(Speed, timeAccumulate);
         //BezierPos(Speed, timeAccumulate);
-        transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
+        //transform.position += new Vector3(0f, -1f, 0f) * Speed * Time.deltaTime;
 
         if (this != null && this.transform.position.y < -6f)
         {
-            //Destroy(this.gameObject);
             Pool.Release(this.gameObject);
         }
     }
 
     private void linearPos(float speed, float time)
     {
-        transform.position = Vector3.down * speed * time + StartPosition;
+        transform.position = (Vector3.down * speed * time) + StartPosition;
     }
 
+    private void SetRandomPoint()
+    {
+        FirstPoint = new Vector3(Random.Range(-2.7f, 2.7f), StartPosition.y, 0);
+        SecondPoint = new Vector3(FirstPoint.x, StartPosition.y - 12, 0);
+        ThirdPoint = new Vector3(StartPosition.x, StartPosition.y - 12, 0);
+    }
     private void BezierPos(float speed, float time)
     {
         Vector3[] points = new Vector3[4];
+        // !! Random 값을 줘버리면, 매 프레임마다 값이 변함.
         points[0] = StartPosition;
-        points[1] = new Vector3(Random.Range(-2.7f, 2.7f), StartPosition.y, 0);
-        points[2] = new Vector3(Random.Range(-2.7f, 0f), StartPosition.y - 12, 0);
-        points[3] = new Vector3(Random.Range(0f, 2.7f), StartPosition.y - 12, 0);
+        points[1] = FirstPoint;
+        points[2] = SecondPoint;
+        points[3] = ThirdPoint;
         Vector3 bezierPosition;
-        for (float t = 0; t < 1; t = (time * speed) / 10)
-        {
-            bezierPosition = Mathf.Pow(1 - t, 3) * points[0]
-                + Mathf.Pow(1 - t, 2) * 3 * points[1]
-                + Mathf.Pow(t, 2) * 3 * points[2]
-                + Mathf.Pow(t, 3) * points[3];
+        float t = (time / 10);
+        // Math.Sin || Math.Cos || PingPong (등속도) ==
+        Vector3 first = Vector3.Lerp(points[0], points[1], t);
+        Vector3 Second = Vector3.Lerp(points[1], points[2], t);
+        Vector3 third = Vector3.Lerp(points[2], points[3], t);
 
-            transform.position = bezierPosition;
-        }
+        Vector3 FNS = Vector3.Lerp(first, Second, t);
+        Vector3 SNT = Vector3.Lerp(Second, third, t);
+        bezierPosition = Vector3.Lerp(FNS,SNT, t);
+        transform.position = bezierPosition;
+
     }
     public void OnTriggerEnter2D(Collider2D coll)
     {
