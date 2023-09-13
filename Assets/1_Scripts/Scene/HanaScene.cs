@@ -9,7 +9,7 @@ public class HanaScene : BaseScene
         if (base.Init() == false)
             return false;
 
-        SceneType = Define.Scene.HanaScene;
+        SceneType = Define.HanaScene;
         Managers.UI.ShowSceneUI<UI_Hana>();
         return true;
     }
