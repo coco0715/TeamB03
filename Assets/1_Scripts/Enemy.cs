@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : Projectile
 { 
@@ -83,17 +84,37 @@ public class Enemy : Projectile
         points[3] = ThirdPoint;
         Vector3 bezierPosition;
         float t = (time / (12 * 1.7f /speed));
+        bezierPosition = CalculateBezierPosition(points, t);
+        Vector3 tangentPos;
+        tangentPos = CalculateTangent(points, t);
+    
+
         // Math.Sin || Math.Cos || PingPong (µî¼Óµµ) ==
+        transform.position = bezierPosition;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, tangentPos);
+    }
+    private Vector3 CalculateBezierPosition(Vector3[] points, float t)
+    {
         Vector3 first = Vector3.Lerp(points[0], points[1], t);
         Vector3 Second = Vector3.Lerp(points[1], points[2], t);
         Vector3 third = Vector3.Lerp(points[2], points[3], t);
 
         Vector3 FNS = Vector3.Lerp(first, Second, t);
         Vector3 SNT = Vector3.Lerp(Second, third, t);
-        bezierPosition = Vector3.Lerp(FNS,SNT, t);
-        transform.position = bezierPosition;
-
+        Vector3 ansPos;
+        ansPos = Vector3.Lerp(FNS, SNT, t);
+        return ansPos;
     }
+    private Vector3 CalculateTangent(Vector3[] points, float t)
+    {
+        float deltaT = t + 0.01f;
+        Vector3 currentPos = CalculateBezierPosition(points, t);
+        Vector3 nextPos = CalculateBezierPosition(points, deltaT);
+        Vector3 tangent = (nextPos - currentPos).normalized;
+        Vector3 fixedTangent = Quaternion.Euler(0, 0, 270) * tangent * -1;
+        return fixedTangent;
+    }
+
     public void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player")
