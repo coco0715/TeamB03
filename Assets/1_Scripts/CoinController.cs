@@ -30,6 +30,6 @@ public class CoinController : MonoBehaviour
     }
     private void Start()
     {
-        InvokeRepeating("DropCoins", 1f, 1f / CoinGenCount);
+        InvokeRepeating("DropCoins", 1f, 1f / (CoinGenCount));
     }
 }
