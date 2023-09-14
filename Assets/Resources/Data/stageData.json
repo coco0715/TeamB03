@@ -12,7 +12,7 @@
 			"CoinScaleCoeff": 1
 		},
 		{
-			"ClearScore": 1500,
+			"ClearScore": 1400,
 			"MaxScore": 0,
 			"IsLocked": true,
 			"EnemyGenCountCoeff": 3,
@@ -23,7 +23,7 @@
 			"CoinScaleCoeff": 1
 		},
 		{
-			"ClearScore": 2000,
+			"ClearScore": 1400,
 			"MaxScore": 0,
 			"IsLocked": true,
 			"EnemyGenCountCoeff": 5,

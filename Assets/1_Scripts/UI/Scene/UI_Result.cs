@@ -96,7 +96,16 @@ public class UI_Result : UI_Scene
         {
             GetText((int)Texts.ResultText).text = "GAME WIN";
             GetButton((int)Buttons.NextLevelButton).gameObject.SetActive(true);
-            PlayerPrefs.SetInt("UnlockedStageNum", ++Managers.User.UnlockedStageNum);
+            if(Managers.GameManager.StageNum <= 3 && Managers.GameManager.Stages[Managers.GameManager.StageNum].IsLocked == false)
+            {
+                return;
+            }
+            if(++Managers.User.UnlockedStageNum == Managers.GameManager.Stages.Count)
+            {
+                Managers.User.UnlockedStageNum = Managers.GameManager.Stages.Count;
+            }
+            PlayerPrefs.SetInt("UnlockedStageNum", Managers.User.UnlockedStageNum);
+            Managers.GameManager.Stages[Managers.GameManager.StageNum].IsLocked = false;
         }
         else
         {

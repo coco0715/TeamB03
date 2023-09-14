@@ -31,11 +31,11 @@ public class Managers : MonoBehaviour
     private void Start()
     {
         Init();
-        //PlayerPrefs.DeleteAll();
     }
 
     private static void Init()
     {
+        //PlayerPrefs.DeleteAll();
         if (s_instance == null)
         {
             GameObject go = GameObject.Find("@Managers");
