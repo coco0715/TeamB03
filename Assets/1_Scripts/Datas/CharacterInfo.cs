@@ -12,6 +12,7 @@ namespace CharacterInformation
         public float AttackSpeed;
         public float ProjectileSize;
         public float MoveSpeed;
+        public bool IsLocked;
     }
 
     [System.Serializable]
