@@ -4,10 +4,13 @@ using TMPro;
 using UnityEngine;
 using ImageDatas;
 using CharacterInformation;
+using UnityEngine.TextCore.Text;
 
 public class UI_SettingImage : UI_Popup
 {
-    public List<Characters> _characters;
+    public List<Characters> _characters = new List<Characters>();
+    public int Index;
+    Characters Character;
 
     enum GameObjects
     {
@@ -22,6 +25,8 @@ public class UI_SettingImage : UI_Popup
     enum Buttons
     {
         DoneButton,
+        BackButton,
+        SettingButton
     }
 
     void Start()
@@ -42,7 +47,22 @@ public class UI_SettingImage : UI_Popup
             //Managers.Sound.Play("ClickBtnEff"); 
             OnClickedDoneButton();
         });
-        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + PlayerPrefs.GetString("UserImg", "Jelly 0"));
+
+        GetButton((int)Buttons.BackButton).gameObject.BindEvent(() => {
+            //Managers.Sound.Play("ClickBtnEff"); 
+            OnClickedBackButton();
+        });
+
+        GetButton((int)Buttons.SettingButton).gameObject.BindEvent(() => {
+            //Managers.Sound.Play("ClickBtnEff"); 
+            OnClickedSettingButton();
+        });
+
+
+        Character = Managers.User.characterInfo;
+        Index = PlayerPrefs.GetInt("CharacterIdx");
+
+        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
 
         _characters = Managers.GameManager.Characters;
         for (int i = 0; i < _characters.Count; i++)
@@ -65,14 +85,43 @@ public class UI_SettingImage : UI_Popup
 
     void OnClickedDoneButton()
     {
+        PlayerPrefs.SetInt("CharacterIdx", Index);
+        Managers.User.SetCharacterInfo(Character);
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_SettingCharacter>();
     }
 
+    void OnClickedBackButton()
+    {
+        Managers.UI.ClosePopupUI(this);
+        Managers.UI.ShowPopupUI<UI_SettingCharacter>();
+    }
+
+    void OnClickedSettingButton()
+    {
+        //Setting btn
+    }
+
     void OnClickedImage(UI_Character uI_Character)
     {
-        Managers.User.SetCharacterInfo(uI_Character._characters);
-        PlayerPrefs.SetInt("CharacterIdx", uI_Character._characterIdx);
-        GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + Managers.User.characterInfo.Img);
+        if (uI_Character._characters.IsLocked)
+        {
+            if(Managers.User.coin >= 1000)
+            {
+                Managers.User.coin -= 1000;
+                PlayerPrefs.SetInt("Coin", Managers.User.coin);
+                _characters[uI_Character._characterIdx].IsLocked = false;
+                CharacterData characterData = new CharacterData();
+                characterData.CharacterInfoList = _characters;
+                Managers.JsonWriter.WriteCharacterDataJson(characterData, "Assets/Resources/Data/characterData.json");
+                uI_Character.SetInfo(uI_Character._characterIdx);
+            }
+        }
+        else
+        {
+            Character = uI_Character._characters;
+            Index = uI_Character._characterIdx;
+            GetImage((int)Images.CharacterImage).sprite = Resources.Load<Sprite>("Sprites/InGame/" + _characters[Index].Img);
+        }
     }
 }
