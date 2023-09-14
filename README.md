@@ -39,7 +39,7 @@
     - 📝 S.A 작성
     - 📝 필수 및 선택 요구 사항 우선 순위 설정
     - 👥 역할 분담 및 기능 명세서 작성
-- **`2023.09.11 (월) 09:00 ~ 10:00`**
+- **`2023.09.11 (월)`**
     - 🧑‍💻 구현
     - 📒 구현을 위한 열공
 - **`2023.09.12 (화)`**
@@ -49,7 +49,7 @@
     - 🐞 버그 찾고 수정
 - **`2023.09.14 (목)`**
     - 📝 ReadMe파일 작성
-    - 📝 발표 자료 제작
+    - 📝 제출 및 발표
 
 ---
 
@@ -245,15 +245,15 @@
     | Projectile | 임의로 떨어지는 Coin과 enemy 클래스의 부모 클래스 |
     | Coin | GameManager로부터 Stage 정보를 받아와, 속도, 크기, 소환 수 등을 설정한다. |
     | CoinController | Coin의 정보에 맞게 Coin을 인스턴스화 |
-    | Enemy | GameManager로부터 Stage 정보를 받아와, 속도, 크기, 소환 수 등을 설정한다.
-    Player 혹은 Bullet과 충돌하면, 각각 Player Hp를 감소시키고 사라진다. |
-    | EnemyController | Enemy의 정보에 맞게 Enemy를 인스턴스화
-    [Serializable] 에 스테이지별 Enemy의 sprite와 animator을 가진 프리팹을 부착하여, Stage 별로 Enemy를 구분하여 랜덤하게 소환한다. |
+    | Enemy | GameManager로부터 Stage 정보를 받아와, 속도, 크기, 소환 수 등을 설정한다.|
+    ||Player 혹은 Bullet과 충돌하면, 각각 Player Hp를 감소시키고 사라진다. |
+    | EnemyController | Enemy의 정보에 맞게 Enemy를 인스턴스화|
+    ||[Serializable] 에 스테이지별 Enemy의 sprite와 animator을 가진 프리팹을 부착하여, Stage 별로 Enemy를 구분하여 랜덤하게 소환한다. |
     | ObjectPoolManager | Enemy에 대한 오브젝트 풀을 관리한다. |
     | StartTimer | 최초의 Enemy 혹은, Coin이 떨어지는 순간 게임을 시작시킨다. |
     | Player | Player 정보를 UserManager로부터 받아와 Sprite, Hp등의 정보를 게임화면에 적용한다. |
-    | Bullet | Player가 마우스 방향으로 쏘는 투사체를 인스턴스화
-    [Serializable] 에 각 종류별 Bullet의 sprite와 animator을 가진 프리팹을 부착하여, Style에 따라 다양한 모양의 Bullet을 적용시킨다. |
+    | Bullet | Player가 마우스 방향으로 쏘는 투사체를 인스턴스화|
+    ||[Serializable] 에 각 종류별 Bullet의 sprite와 animator을 가진 프리팹을 부착하여, Style에 따라 다양한 모양의 Bullet을 적용시킨다. |
 - **결과 화면**
     
     
