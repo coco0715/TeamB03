@@ -95,9 +95,7 @@
 
 # 3. 플레이 영상
 
-[🔗 **영상 보러가기**](https://www.youtube.com/watch?v=QQV5YfqrWv0)
-
-[https://www.youtube.com/watch?v=QQV5YfqrWv0](https://www.youtube.com/watch?v=QQV5YfqrWv0)
+[🔗 **영상 보러가기**](https://www.youtube.com/watch?v=cNl5ciNcWFQ)
 
 ---
 
