@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         Stages = Managers.JsonReader.ReadStageDataJson("Assets/Resources/Data/stageData.json").StageInfoList;
         Characters = Managers.JsonReader.ReadCharacterDataJson("Assets/Resources/Data/characterData.json").CharacterInfoList;
 
-        for(int i = 0; i < PlayerPrefs.GetInt("UnlockedStageNum", 1); i++)
+        for(int i = 0; i < PlayerPrefs.GetInt("UnlockedStageNum", 1) - 1; i++)
         {
             Stages[i].IsLocked = false;
             Stages[i].MaxScore = PlayerPrefs.GetInt($"Stage{i+1}MaxScore", 0);
