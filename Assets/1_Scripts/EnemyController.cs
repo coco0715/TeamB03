@@ -107,6 +107,14 @@ public class EnemyController : MonoBehaviour
             // animator Àû¿ë
             int randNum = UnityEngine.Random.Range(0, randEnemyArray.Length);
             enemyGo.GetComponent<Animator>().runtimeAnimatorController = randEnemyArray[randNum].GetComponent<Animator>().runtimeAnimatorController;
+            if (enemyGo.GetComponent<Animator>().name == "PenguinAttack")
+            {
+                enemyGo.GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.5f);
+            }
+            if (enemyGo.GetComponent<Animator>().name == "PenguinSlide")
+            {
+                enemyGo.GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.8f);
+            }
             enemyGo.GetComponent<Enemy>().Damage = damageArray[randNum];
         }
     }
