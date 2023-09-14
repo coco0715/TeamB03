@@ -1,1 +1,100 @@
-{"CharacterInfoList":[{"Hp":3,"Img":"Jelly 0","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.0,"IsLocked":false},{"Hp":3,"Img":"Jelly 1","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.0,"IsLocked":false},{"Hp":3,"Img":"Jelly 2","AttackSpeed":0.30000001192092898,"ProjectileSize":0.800000011920929,"MoveSpeed":1.0,"IsLocked":false},{"Hp":3,"Img":"Jelly 3","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.2999999523162842,"IsLocked":false},{"Hp":4,"Img":"Jelly 4","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.0,"IsLocked":true},{"Hp":4,"Img":"Jelly 5","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.0,"IsLocked":true},{"Hp":4,"Img":"Jelly 6","AttackSpeed":0.30000001192092898,"ProjectileSize":0.800000011920929,"MoveSpeed":1.0,"IsLocked":false},{"Hp":4,"Img":"Jelly 7","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.2999999523162842,"IsLocked":false},{"Hp":5,"Img":"Jelly 8","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.0,"IsLocked":false},{"Hp":5,"Img":"Jelly 9","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.0,"IsLocked":true},{"Hp":5,"Img":"Jelly 10","AttackSpeed":0.30000001192092898,"ProjectileSize":0.800000011920929,"MoveSpeed":1.0,"IsLocked":true},{"Hp":5,"Img":"Jelly 11","AttackSpeed":0.30000001192092898,"ProjectileSize":1.0,"MoveSpeed":1.2999999523162842,"IsLocked":true}]}
+{
+	"CharacterInfoList": [
+	  {
+		"Hp": 3,
+		"Img": "Jelly 0",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1,
+		"IsLocked" : false
+	  },
+	  {
+		"Hp": 3,
+		"Img": "Jelly 1",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1,
+		"IsLocked": false
+	  },
+	  {
+		"Hp": 3,
+		"Img": "Jelly 2",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 0.8,
+		"MoveSpeed": 1,
+		"IsLocked": false
+	  },
+	  {
+		"Hp": 3,
+		"Img": "Jelly 3",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1.3,
+		"IsLocked": false
+	  },
+	  {
+		"Hp": 4,
+		"Img": "Jelly 4",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 4,
+		"Img": "Jelly 5",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 4,
+		"Img": "Jelly 6",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 0.8,
+		"MoveSpeed": 1,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 4,
+		"Img": "Jelly 7",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1.3,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 5,
+		"Img": "Jelly 8",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 5,
+		"Img": "Jelly 9",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 5,
+		"Img": "Jelly 10",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 0.8,
+		"MoveSpeed": 1,
+		"IsLocked": true
+	  },
+	  {
+		"Hp": 5,
+		"Img": "Jelly 11",
+		"AttackSpeed": 0.3,
+		"ProjectileSize": 1,
+		"MoveSpeed": 1.3,
+		"IsLocked": true
+	  }
+	]
+  }

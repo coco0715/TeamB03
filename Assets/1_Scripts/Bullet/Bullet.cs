@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.UIElements;
-
 public class Bullet : MonoBehaviour
 {
     private float BulletSpeed = 2;
@@ -12,7 +11,6 @@ public class Bullet : MonoBehaviour
     Vector2 rotatedDirectionVector;
     public GameObject BulletImage;
     public int Style = 0;
-
     [Serializable]
     public class BulletCollection
     {
@@ -20,9 +18,7 @@ public class Bullet : MonoBehaviour
         public GameObject BulletPrefab;
     }
     [SerializeField] BulletCollection[] BulletCollections;
-
     public GameObject[] BulletArray = null;
-
     public void SetArray()
     {
         for (int i = 0; i < BulletCollections.Length; i++)
@@ -31,13 +27,28 @@ public class Bullet : MonoBehaviour
             BulletArray[BulletArray.Length - 1] = BulletCollections[i].BulletPrefab;
         }
     }
-
     void Start()
     {
-        Style = 0;
+        int idx = PlayerPrefs.GetInt("CharacterIdx");
+        if (idx >= 0 && idx <= 3)
+        {
+            Style = 0;
+        }
+        else if (idx >= 4 && idx <= 7)
+        {
+            Style = 1;
+        }
+        else if (idx >= 8 && idx <= 11)
+        {
+            Style = 2;
+        }
+        else if (idx >= 12 && idx <= 5)
+        {
+            Style = 3;
+        }
         if (Style == 2)
         {
-            BulletImage.transform.localEulerAngles = new Vector3 (0f, 0f, 0f);
+            BulletImage.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
         }
         SetArray();
         Debug.Log("!!!!!!! Style : " + Style);
@@ -52,18 +63,15 @@ public class Bullet : MonoBehaviour
         Quaternion rotationQuaternion = Quaternion.AngleAxis(this.transform.rotation.eulerAngles.z, Vector3.forward);
         rotatedDirectionVector = rotationQuaternion * Vector2.up;
     }
-
     void Update()
     {
         //총알 앞으로 가게 함
         M_Rigidbody2D.velocity = rotatedDirectionVector * BulletSpeed;
     }
-
     public void DestroyBullet()
     {
         Destroy(this.gameObject);
     }
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
         //DestroyBullet();
