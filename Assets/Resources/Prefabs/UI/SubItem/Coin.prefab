@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2421343691936151383, guid: 606e3127513c6c74d852755e18a67337, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -139,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 810649416054300279}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &7088545483170647451
 CircleCollider2D:
@@ -224,5 +224,18 @@ MonoBehaviour:
   StartPosition: {x: 0, y: 0, z: 0}
   _Rotation: {x: 0, y: 0, z: 0}
   sprite: {fileID: 0}
+  TimeAccumulate: 0
   CoinSpeed: 0
-  CoinObj: {fileID: 8065509600961508076}
+  CoinGenCount: 0
+  CoinScale: {x: 0, y: 0, z: 0}
+  Stage:
+    ClearScore: 0
+    MaxScore: 0
+    IsLocked: 0
+    EnemyGenCountCoeff: 0
+    CoinGenCoeff: 0
+    EnemySpeedCoeff: 0
+    CoinSpeedCoeff: 0
+    EnemyScaleCoeff: 0
+    CoinScaleCoeff: 0
+  StageNum: 0

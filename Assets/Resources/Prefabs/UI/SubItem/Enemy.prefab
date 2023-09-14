@@ -119,6 +119,18 @@ MonoBehaviour:
   StartPosition: {x: 0, y: 0, z: 0}
   _Rotation: {x: 0, y: 0, z: 0}
   sprite: {fileID: 0}
+  TimeAccumulate: 0
+  Stage:
+    ClearScore: 0
+    MaxScore: 0
+    IsLocked: 0
+    EnemyGenCountCoeff: 0
+    CoinGenCoeff: 0
+    EnemySpeedCoeff: 0
+    CoinSpeedCoeff: 0
+    EnemyScaleCoeff: 0
+    CoinScaleCoeff: 0
+  StageNum: 0
   EnemySpeed: 0
   Damage: 0
 --- !u!212 &3452267735653250489
@@ -161,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
